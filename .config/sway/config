@@ -25,6 +25,9 @@ output eDP-1 res 2560x1600 scale 1.33
 # output eDP-1 res 2560x1600 scale 1.33 pos 1920 0
 # output eDP-1 res 2560x1600 scale 1 pos 1920 0
 
+output * allow_tearing yes
+output * max_render_time off
+
 ### Idle configuration
 #
 # Example configuration:
@@ -232,19 +235,51 @@ bindsym Print exec grim
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position bottom
-
+    swaybar_command waybar
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    # status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    # colors {
+    #     statusline #ffffff
+    #     background #323232
+    #     inactive_workspace #32323200 #32323200 #5c5c5c
+    # }
 }
 
-default_border pixel
 gaps inner 10
-smart_corner_radius enable
+default_border pixel
+
+#
+# SwayFX stuff:
+#
+# SwayFX has window blurring, which gives a blurry transparency to window backgrounds.
+blur enable
+blur_xray disable # Window blurring can either be truly transparent, with other apps visible behind the window, or blur according to the wallpaper. blur_xray enables wallpaper blurring. 
+blur_passes 4
+blur_radius 4
+# blur_noise <float value 0 - 1>
+# blur_brightness <float value 0 - 2>
+# blur_contrast <float value 0 - 2>
+# blur_saturation <float value 0 - 2>
+
+# Window corners can be rounded in SwayFX
+# corner_radius can be any number of pixels
 corner_radius 5
+smart_corner_radius enable
+
+# SwayFX also features window drop shadows, which, of course, can be enabled at any time
+shadows disable
+shadows_on_csd enable
+
+# You can also offset the shadow's position, make unfocused windows have different shadows, give shadows a nondefault color, and blur shadows
+# shadow_inactive_color #0000007F
+# shadow_offset <x offset> <y offset>
+# shadow_blur_radius <integer value 0 - 99>
+# shadow_color <hex color with alpha>
+
+# Dimming
+# default_dim_inactive <float value 0.0 - 1.0>
+# for_window [CRITERIA_HERE] dim_inactive <float value 0.0 - 1.0>
+# dim_inactive_colors.unfocused <hex color>
+# dim_inactive_colors.urgent <hex color> 
