@@ -113,6 +113,11 @@ bindsym $mod+Mod1+Left move left
 bindsym $mod+Mod1+Down move down
 bindsym $mod+Mod1+Up move up
 bindsym $mod+Mod1+Right move right
+
+# Move container to left & right output
+bindsym --whole-window $mod+button8 move container to output left; workspace next_on_output; focus output left
+bindsym --whole-window $mod+button9 move container to output right; workspace next_on_output; focus output right
+
 #
 # Workspaces:
 #
