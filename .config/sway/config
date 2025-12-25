@@ -51,8 +51,6 @@ input type:touchpad {
 
 input type:keyboard {
     xkb_numlock enabled
-    xkb_options caps:swapescape
-# 	   xkb_options caps:ctrl_modifier
 }
 #
 #   input type:keyboard {
