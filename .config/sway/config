@@ -54,6 +54,10 @@ set $term ghostty
 # Your preferred application launcher
 set $menu fuzzel
 
+set $move_to_next ~/.config/sway/move-to-next.sh
+set $start_on_next ~/.config/sway/start-on-next.sh
+set $open_next ~/.config/sway/open-next.sh
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -116,6 +120,7 @@ bindsym $mod+q kill
 
 # Start your launcher
 bindsym Mod1+Space exec $menu
+bindsym Mod1+Control+space exec $open_next; exec exec $menu
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -135,6 +140,7 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 
 # Start specific apps
 bindsym Mod1+f exec vivaldi
+bindsym Mod1+Control+f exec $start_on_next vivaldi
 
 bindsym Mod1+a exec $term
 bindsym $mod+a [con_mark="terminal"] scratchpad show
@@ -226,10 +232,19 @@ bindsym $mod+Shift+space floating toggle
 # Move focus to the parent container
 # bindsym $mod+a focus parent
 
-
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+a scratchpad show
 
+# Move container to left & right output on new workspace
+bindsym --whole-window $mod+Control+button8 move container to output left; workspace next_on_output; focus output left; exec --no-startup-id $move_to_next
+bindsym $mod+Control+Left move container to output left; workspace next_on_output; focus output left; exec --no-startup-id $move_to_next
+bindsym --whole-window $mod+Control+button9 move container to output right; workspace next_on_output; focus output right; exec --no-startup-id $move_to_next
+bindsym $mod+Control+Right move container to output right; workspace next_on_output; focus output right; exec --no-startup-id $move_to_next
+
+# To workspace on same screen
+# move window to next available workspace on same screen
+bindsym --whole-window $mod+button4 exec --no-startup-id $move_to_next
+bindsym $mod+Control+Up exec --no-startup-id $move_to_next
 # switch to next available workspace on same screen
 bindsym --whole-window $mod+Shift+button4 move container to workspace next_on_output; workspace next_on_output;
 bindsym $mod+Control+Down move container to workspace next_on_output; workspace next_on_output;
