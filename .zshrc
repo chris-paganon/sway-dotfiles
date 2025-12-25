@@ -19,6 +19,7 @@ antigen apply
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+eval "$(fzf --zsh)"
 
 bindkey -e
 bindkey '^p' history-search-backward
