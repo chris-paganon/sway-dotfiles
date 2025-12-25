@@ -2,7 +2,7 @@
 
 * {
   font-family: FantasqueSansMono Nerd Font;
-  font-size: 13px;
+  font-size: 16px;
   min-height: 0;
 }
 
@@ -14,28 +14,46 @@
 }
 
 #workspaces {
-  border-radius: 1rem;
-  margin: 5px;
+  border-radius: 2rem;
+  margin: 6px 5px;
   background-color: @surface0;
   margin-left: 1rem;
 }
 
 #workspaces button {
-  color: @lavender;
-  border-radius: 1rem;
-  padding: 0.4rem;
+  color: @mauve;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0px
 }
 
+#workspaces button.focused, 
 #workspaces button.active {
-  color: @sky;
-  background-color: @surface2;
-  border-radius: 1rem;
+  color: @base;
+  background-color: @mauve;
+}
+#workspaces button.focused:first-child, 
+#workspaces button.active:first-child {
+  border-radius: 2rem 0 0 2rem;
+}
+#workspaces button.focused:last-child, 
+#workspaces button.active:last-child {
+  border-radius: 0 2rem 2rem 0;
+}
+#workspaces button.focused:only-child, 
+#workspaces button.active:only-child {
+  border-radius: 2rem;
 }
 
-#workspaces button:hover {
-  color: @sapphire;
-  border-radius: 1rem;
+
+#workspaces button.hover {
+  color: @base;
+  background-color: @mauve;
 }
+
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+}
+
 
 #custom-music,
 #tray,
@@ -47,13 +65,13 @@
 #custom-power,
 #network {
   background-color: @surface0;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.2rem;
   margin: 5px 0;
 }
 
 #clock {
   color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
+  border-radius: 0px 2rem 2rem 0px;
   margin-right: 1rem;
 }
 
@@ -79,7 +97,7 @@
 
 #pulseaudio {
   color: @maroon;
-  border-radius: 1rem 0px 0px 1rem;
+  border-radius: 2rem 0px 0px 2rem;
   margin-left: 1rem;
 }
 
@@ -89,14 +107,14 @@
 }
 
 #custom-lock {
-    border-radius: 1rem 0px 0px 1rem;
-    color: @lavender;
+  border-radius: 1rem 0px 0px 1rem;
+  color: @lavender;
 }
 
 #custom-power {
-    margin-right: 1rem;
-    border-radius: 0px 1rem 1rem 0px;
-    color: @red;
+  margin-right: 1rem;
+  border-radius: 0px 1rem 1rem 0px;
+  color: @red;
 }
 
 #tray {
