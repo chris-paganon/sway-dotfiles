@@ -87,14 +87,23 @@ bindsym Mod1+Space exec $menu
 # mouse button for dragging.
 floating_modifier $mod normal
 
+# Don't steal the focus
+focus_on_window_activation focus
+
 # Reload the configuration file
 bindsym $mod+Shift+c reload
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
+# Start specific apps
 bindsym Mod1+f exec vivaldi
 
+bindsym Mod1+a exec $term
+bindsym $mod+a [con_mark="terminal"] scratchpad show
+for_window [app_id="com.mitchellh.ghostty"] mark "terminal"
+for_window [app_id="com.mitchellh.ghostty"] move scratchpad, scratchpad show;
+for_window [app_id="com.mitchellh.ghostty"] resize set 1600 900
 #
 # Moving around:
 #
@@ -163,14 +172,18 @@ bindsym $mod+e layout toggle split
 # Make the current focus fullscreen
 bindsym $mod+Shift+f fullscreen
 
+# To scratchpad
+bindsym --whole-window $mod+button5 move scratchpad
+# bindsym $mod+space move scratchpad
 # Toggle the current focus between tiling and floating mode
+bindsym --whole-window $mod+button2 floating toggle
 bindsym $mod+Shift+space floating toggle
 
 # Swap focus between the tiling area and the floating area
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # Move focus to the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 
 bindsym $mod+Tab workspace next_on_output
