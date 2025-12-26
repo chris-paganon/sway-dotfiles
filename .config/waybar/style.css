@@ -10,12 +10,12 @@
   background: @base;
   opacity: 0.8;
   color: @text;
-  margin: 4px 5px;
+  margin: 0px 5px;
 }
 
 #workspaces {
   border-radius: 2rem;
-  margin: 6px 5px;
+  margin: 4px 5px;
   background-color: @surface0;
   margin-left: 1rem;
 }
@@ -65,8 +65,8 @@
 #custom-power,
 #network {
   background-color: @surface0;
-  padding: 0.2rem 1.2rem;
-  margin: 2px 0;
+  padding: 0.2rem 0.8rem;
+  margin: 4px 0;
 }
 
 #clock {
