@@ -138,6 +138,9 @@ bindsym $mod+Shift+c reload
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
+# Shutdown, logout, suspend, etc fuzzel script
+bindsym $mod+Mod1+e exec ~/.config/fuzzel/fuzzel-logout.sh
+
 # Start specific apps
 bindsym Mod1+f exec vivaldi
 bindsym Mod1+Control+f exec $start_on_next vivaldi
