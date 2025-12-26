@@ -344,7 +344,7 @@ shadows_on_csd enable
 # shadow_color <hex color with alpha>
 
 # Dimming
-default_dim_inactive 0.1
+default_dim_inactive 0.08
 # for_window [CRITERIA_HERE] dim_inactive <float value 0.0 - 1.0>
 # dim_inactive_colors.unfocused <hex color>
 # dim_inactive_colors.urgent <hex color> 
