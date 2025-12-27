@@ -94,3 +94,4 @@ mf() {
     micro $(fzf --preview="bat -f {}" --query="$1")
 }
 
+export "MICRO_TRUECOLOR=1"
