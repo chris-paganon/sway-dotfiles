@@ -73,7 +73,9 @@ output DP-1 res 1920x1080 scale 1 pos 1920 0
 output * allow_tearing yes
 output * max_render_time off
 
+### Autostart
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec slimbookbattery --minimize
 
 ### Idle configuration
 #
@@ -115,9 +117,6 @@ input type:keyboard {
 #
 # Basics:
 #
-# Start a terminal
-bindsym Mod1+t exec $term
-
 # Kill focused window
 bindsym $mod+q kill
 
@@ -148,7 +147,8 @@ bindsym $mod+Mod1+e exec ~/.config/fuzzel/fuzzel-logout.sh
 bindsym Mod1+f exec vivaldi
 bindsym Mod1+Control+f exec $start_on_next vivaldi
 
-bindsym Mod1+a exec $term
+bindsym Mod1+t exec $term
+bindsym Mod1+a exec ghostty -e ~/.config/tmux/open-main-tmux.sh
 bindsym $mod+a [con_mark="terminal"] scratchpad show
 for_window [app_id="com.mitchellh.ghostty"] mark "terminal"
 for_window [app_id="com.mitchellh.ghostty"] move scratchpad, scratchpad show;
