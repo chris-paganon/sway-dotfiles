@@ -73,6 +73,8 @@ output DP-1 res 1920x1080 scale 1 pos 1920 0
 output * allow_tearing yes
 output * max_render_time off
 
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
 ### Idle configuration
 #
 # Example configuration:
