@@ -17,13 +17,13 @@ receiver() {
 
   if [[ -n "$fuzzel_output" ]]; then
     if [[ "$fuzzel_output" == "logout" ]]; then
-      swaymsg exit
+      swaylock -f
     elif [[ "$fuzzel_output" == "suspend" ]]; then
-      echo "suspend from fuzzel"
+      systemctl suspend
     elif [[ "$fuzzel_output" == "reboot" ]]; then
       reboot
     elif [[ "$fuzzel_output" == "hibernate" ]]; then
-      echo "hibernate from fuzzel"
+      systemctl hibernate
     elif [[ "$fuzzel_output" == "shutdown" ]]; then
       shutdown now
     fi
