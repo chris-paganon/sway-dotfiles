@@ -62,13 +62,9 @@ alias aliasnpm='alias | grep npm'
 
 # specific tools aliases
 alias cd="z"
-alias ai='ollama run llama3.2:3b'
-alias ai-code="ollama run deepseek-coder-v2:16b"
 alias b='nitrogen --restore'
 alias dockerstop="docker stop \$(docker ps -q)"
 alias dockerstart="docker start \$(docker ps -qa)"
-alias hybrid="supergfxctl -m Hybrid && xfce4-session-logout --logout --fast"
-alias integrated="supergfxctl -m Integrated && xfce4-session-logout --logout --fast"
 alias be="~/.config/tmux/plutaro-full-stack.sh"
 alias be-fcts="~/.config/tmux/plutaro-functions.sh"
 
@@ -78,12 +74,6 @@ alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias mkinit="sudo mkinitcpio -P"
 alias reopenx="chvt 7"
 alias fixtime="sudo sntp -S pool.ntp.org && sudo hwclock -w"
-
-# scripts
-alias stt="~/scripts/py-stt/py-stt"
-alias dev="./scripts/open-git-folder.sh"
-alias saver="asusctl profile -P Quiet && sudo systemctl stop ollama"
-alias deepsaver="saver && sudo pkill picom && sudo systemctl stop tailscaled && sudo systemctl stop gopreload"
 
 # to remember
 alias cleanlogs="sudo journalctl --vacuum-time=2weeks"
@@ -95,3 +85,4 @@ mf() {
 }
 
 export "MICRO_TRUECOLOR=1"
+source /home/chris/.config/broot/launcher/bash/br
