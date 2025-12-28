@@ -144,6 +144,9 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 # Shutdown, logout, suspend, etc fuzzel script
 bindsym $mod+Mod1+e exec ~/.config/fuzzel/fuzzel-logout.sh
 
+bindsym Mod1+x exec grimshot copy area
+bindsym Mod1+Shift+x exec grimshot savecopy area "$HOME/Pictures/screenshots/$(date +%Y-%m-%dT%H:%M:%S%Z).jpg"
+
 # Start specific apps
 bindsym Mod1+f exec vivaldi
 bindsym Mod1+Control+f exec $start_on_next vivaldi
@@ -321,6 +324,7 @@ bar swaybar_command waybar
 
 gaps inner 10
 default_border pixel
+exec /usr/share/sway-contrib/inactive-windows-transparency.py -g -o 0.92
 
 #
 # SwayFX stuff:
