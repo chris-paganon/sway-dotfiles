@@ -38,8 +38,8 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='lsd --tree'
 alias ltd='lt --depth'
-alias copy="xsel -b -i"
-alias paste="xsel -b -o"
+alias copy="wl-copy"
+alias paste="wl-paste"
 alias gco='git checkout --no-guess'
 alias gcaam='git add -A && git commit -m'
 alias glolu='git log -u $(git rev-list --max-parents=0 HEAD) HEAD'
