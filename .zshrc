@@ -69,7 +69,6 @@ alias be="~/.config/tmux/plutaro-full-stack.sh"
 alias be-fcts="~/.config/tmux/plutaro-functions.sh"
 
 # remember fixes
-alias fixlight=" asusctl aura-power keyboard --awake"
 alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias mkinit="sudo mkinitcpio -P"
 alias reopenx="chvt 7"
