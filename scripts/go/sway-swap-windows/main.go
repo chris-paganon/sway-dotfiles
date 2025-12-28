@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"os"
@@ -8,7 +9,7 @@ import (
 	"sort"
 	"strings"
 
-	"go.i3wm.org/i3"
+	"github.com/joshuarubin/go-sway"
 )
 
 func main() {
@@ -17,33 +18,52 @@ func main() {
 		log.Fatal(err)
 	}
 
-	tree, err := i3.GetTree()
+	ctx := context.Background()
+
+	client, err := sway.New(ctx)
+	if err != nil {
+
+		log.Fatal("no client", err)
+	}
+
+	tree, err := client.GetTree(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
-	focusedWorkspace := tree.Root.FindFocused(func(node *i3.Node) bool {
-		return node.Type == i3.WorkspaceNode
+
+	workspaces, err := client.GetWorkspaces(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	focusedWorkspaceIndex := slices.IndexFunc(workspaces, func(workspace sway.Workspace) bool {
+		return workspace.Focused
 	})
-	if focusedWorkspace == nil {
+	if focusedWorkspaceIndex == -1 {
 		log.Fatal("could not locate workspace")
 	}
+
+	focusedWorkspace := workspaces[focusedWorkspaceIndex]
+
+	fmt.Print("focusedWorkspace")
+	fmt.Println(focusedWorkspace.Name)
 	focusedWorkspaceName := focusedWorkspace.Name
 
-	realOutputs, err := getSortedOutputs()
+	realOutputs, err := getSortedOutputs(client, ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	workspaceToSwapWith, err := getWorkspaceToSwapWith(tree, realOutputs, swapDirection, focusedWorkspaceName)
+	workspaceToSwapWith, err := getWorkspaceToSwapWith(tree, realOutputs, swapDirection, focusedWorkspace)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	windowToSwapWith := workspaceToSwapWith.Nodes[0].Window
 
-	i3.RunCommand(fmt.Sprintf("move container to workspace %s", workspaceToSwapWith.Name))
-	i3.RunCommand(fmt.Sprintf("[id=\"%d\"] focus", windowToSwapWith))
-	i3.RunCommand(fmt.Sprintf("move container to workspace %s", focusedWorkspaceName))
+	client.RunCommand(ctx, fmt.Sprintf("move container to workspace %s", workspaceToSwapWith.Name))
+	client.RunCommand(ctx, fmt.Sprintf("[id=\"%d\"] focus", windowToSwapWith))
+	client.RunCommand(ctx, fmt.Sprintf("move container to workspace %s", focusedWorkspaceName))
 }
 
 func getSwapDirection() (string, error) {
@@ -60,13 +80,13 @@ func getSwapDirection() (string, error) {
 	return swapDirection, nil
 }
 
-func getSortedOutputs() ([]*i3.Output, error) {
-	outputs, err := i3.GetOutputs()
+func getSortedOutputs(client sway.Client, ctx context.Context) ([]*sway.Output, error) {
+	outputs, err := client.GetOutputs(ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	outputSlice := make([]*i3.Output, len(outputs))
+	outputSlice := make([]*sway.Output, len(outputs))
 	for i := range outputs {
 		outputSlice[i] = &outputs[i]
 	}
@@ -76,7 +96,7 @@ func getSortedOutputs() ([]*i3.Output, error) {
 		return outputSlice[i].Rect.X < outputSlice[j].Rect.X
 	})
 
-	realOutputs := slices.DeleteFunc(outputSlice, func(output *i3.Output) bool {
+	realOutputs := slices.DeleteFunc(outputSlice, func(output *sway.Output) bool {
 		return strings.Contains(output.Name, "xroot")
 	})
 
@@ -87,9 +107,17 @@ func getSortedOutputs() ([]*i3.Output, error) {
 	return realOutputs, nil
 }
 
-func getWorkspaceToSwapWith(tree i3.Tree, outputs []*i3.Output, swapDirection string, focusedWorkspaceName string) (*i3.Node, error) {
-	focusedOutputIndex := slices.IndexFunc(outputs, func(output *i3.Output) bool {
-		return output.CurrentWorkspace == focusedWorkspaceName
+func getWorkspaceToSwapWith(tree *sway.Node, outputs []*sway.Output, swapDirection string, focusedWorkspace sway.Workspace) (*sway.Node, error) {
+	fmt.Printf("Current workspace output: %s", focusedWorkspace.Output)
+	fmt.Println()
+
+	for _, output := range outputs {
+		fmt.Println(output.Name)
+		fmt.Println(output.CurrentWorkspace)
+	}
+
+	focusedOutputIndex := slices.IndexFunc(outputs, func(output *sway.Output) bool {
+		return output.Name == focusedWorkspace.Output
 	})
 
 	if focusedOutputIndex == -1 {
@@ -111,8 +139,8 @@ func getWorkspaceToSwapWith(tree i3.Tree, outputs []*i3.Output, swapDirection st
 
 	outputToSwapWith := outputs[outputIndexToSwapWith]
 
-	workspaceToSwapWith := tree.Root.FindChild(func(node *i3.Node) bool {
-		return node.Type == i3.WorkspaceNode && node.Name == outputToSwapWith.CurrentWorkspace
+	workspaceToSwapWith := tree.TraverseNodes(func(node *sway.Node) bool {
+		return node.Type == "workspace" && node.Name == outputToSwapWith.CurrentWorkspace
 	})
 
 	if workspaceToSwapWith == nil {

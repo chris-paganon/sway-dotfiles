@@ -57,6 +57,7 @@ set $menu fuzzel
 set $move_to_next ~/.config/sway/move-to-next.sh
 set $start_on_next ~/.config/sway/start-on-next.sh
 set $open_next ~/.config/sway/open-next.sh
+set $swap_windows exec --no-startup-id ~/scripts/go/sway-swap-windows/sway-swap-windows
 
 ### Output configuration
 #
@@ -259,6 +260,12 @@ bindsym $mod+Control+Up exec --no-startup-id $move_to_next
 bindsym --whole-window $mod+Shift+button4 move container to workspace next_on_output; workspace next_on_output;
 bindsym $mod+Control+Down move container to workspace next_on_output; workspace next_on_output;
 
+# Swap containers
+bindsym --whole-window $mod+Shift+button8 $swap_windows left;
+bindsym $mod+Shift+Left $swap_windows left;
+bindsym --whole-window $mod+Shift+button9 $swap_windows right;
+bindsym $mod+Shift+Right $swap_windows right;
+
 #
 # Scratchpad:
 #
@@ -324,7 +331,7 @@ bar swaybar_command waybar
 
 gaps inner 10
 default_border pixel
-exec /usr/share/sway-contrib/inactive-windows-transparency.py -g -o 0.92
+exec /usr/share/sway-contrib/inactive-windows-transparency.py -g -o 0.95
 
 #
 # SwayFX stuff:

@@ -1,10 +1,12 @@
-module i3-swap-windows
+module sway-swap-windows
 
 go 1.23.4
 
-require go.i3wm.org/i3 v0.0.0-20190720062127-36e6ec85cc5a
+require github.com/joshuarubin/go-sway v1.2.0
 
 require (
-	github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802 // indirect
-	github.com/BurntSushi/xgbutil v0.0.0-20160919175755-f7c97cef3b4e // indirect
+	github.com/joshuarubin/lifecycle v1.0.0 // indirect
+	go.uber.org/atomic v1.3.2 // indirect
+	go.uber.org/multierr v1.1.0 // indirect
+	golang.org/x/sync v0.0.0-20190412183630-56d357773e84 // indirect
 )
