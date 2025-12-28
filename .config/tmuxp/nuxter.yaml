@@ -1,0 +1,18 @@
+session_name: config
+start_directory: ~/Documents/web/websites/nuxter
+
+windows:
+- window_name: nuxter
+  focus: false
+- window_name: vai-run
+  layout: even-horizontal
+  start_directory: ./vue-ai-tools
+  focus: true
+  panes:
+  - shell_command:
+    - npm run dev
+  - shell_command:
+    - docker compose up
+- window_name: vai-cli
+  start_directory: ./vue-ai-tools
+  focus: false

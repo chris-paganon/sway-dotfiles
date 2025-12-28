@@ -1,0 +1,43 @@
+session_name: pp
+start_directory: ~/Documents/plutaro/code
+
+windows:
+- window_name: template
+  layout: main-horizontal
+  options:
+    main-pane-height: 80%
+  panes:
+  - shell_command:
+    - cd ./template-internal
+  - shell_command:
+    - cd ./template-internal/frontend
+    - cmd: pnpm run dev
+      enter: false
+    focus: true
+
+- window_name: library
+  layout: main-horizontal
+  options:
+    main-pane-height: 80%
+  panes:
+  - shell_command:
+    - cd ./component-library-main
+  - shell_command:
+    - cd ./component-library-main/src/mcp
+    - cmd: pnpm build:watch
+      enter: false
+    focus: true
+
+- window_name: hub
+  focus: true
+  layout: main-horizontal
+  options:
+    main-pane-height: 80%
+  panes:
+  - shell_command:
+    - cd ./plutaro-hub
+  - shell_command:
+    - cd ./plutaro-hub/frontend
+    - cmd: pnpm run dev
+      enter: false
+    focus: true

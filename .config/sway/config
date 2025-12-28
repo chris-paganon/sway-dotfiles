@@ -144,6 +144,7 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 
 # Shutdown, logout, suspend, etc fuzzel script
 bindsym $mod+Mod1+e exec ~/.config/fuzzel/fuzzel-logout.sh
+bindsym $mod+Mod1+Space exec ~/.config/fuzzel/fuzzel-tmuxp.sh
 
 bindsym Mod1+x exec grimshot copy area
 bindsym Mod1+Shift+x exec grimshot savecopy area "$HOME/Pictures/screenshots/$(date +%Y-%m-%dT%H:%M:%S%Z).jpg"

@@ -48,6 +48,8 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
+confirm-close-surface = false
+
 theme = catppuccin-mocha.conf
 background-opacity = 0.92
 

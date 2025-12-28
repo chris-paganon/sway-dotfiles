@@ -1,0 +1,14 @@
+session_name: agent-zero
+start_directory: ~/
+
+windows:
+- window_name: a0
+  focus: true
+  start_directory: ~/Documents/arch/agent-zero
+  layout: main-horizontal
+  options:
+    main-pane-height: 75%
+  panes:
+    - shell_command: "docker compose up -d"
+    - shell_command: "nohup vivaldi http://localhost:50001 > /dev/null &"
+
