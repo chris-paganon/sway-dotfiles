@@ -59,10 +59,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	windowToSwapWith := workspaceToSwapWith.Nodes[0].Window
+	windowToSwapWith := workspaceToSwapWith.Nodes[0].ID
 
 	client.RunCommand(ctx, fmt.Sprintf("move container to workspace %s", workspaceToSwapWith.Name))
-	client.RunCommand(ctx, fmt.Sprintf("[id=\"%d\"] focus", windowToSwapWith))
+	client.RunCommand(ctx, fmt.Sprintf("[con_id=\"%d\"] focus", windowToSwapWith))
 	client.RunCommand(ctx, fmt.Sprintf("move container to workspace %s", focusedWorkspaceName))
 }
 
