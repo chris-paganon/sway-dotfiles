@@ -174,6 +174,11 @@ for_window [app_id="spotify"] resize set 1600 900
 for_window [app_id="spotify"] move left 40
 for_window [app_id="spotify"] move up 40
 
+bindsym Mod1+c exec cursor
+bindsym Mod1+Control+c exec --no-startup-id $start_on_next cursor
+bindsym $mod+c [class="Cursor"] focus
+
+
 bindsym Mod1+q exec qalculate-qt
 for_window [app_id="io.github.Qalculate.qalculate-qt"] floating enable; move position cursor
 
@@ -364,7 +369,7 @@ smart_corner_radius enable
 
 # SwayFX also features window drop shadows, which, of course, can be enabled at any time
 shadows disable
-shadows_on_csd enable
+# shadows_on_csd enable 
 
 # You can also offset the shadow's position, make unfocused windows have different shadows, give shadows a nondefault color, and blur shadows
 # shadow_inactive_color #0000007F
