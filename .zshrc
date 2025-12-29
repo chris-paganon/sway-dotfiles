@@ -77,8 +77,6 @@ alias fixtime="sudo sntp -S pool.ntp.org && sudo hwclock -w"
 # to remember
 alias cleanlogs="sudo journalctl --vacuum-time=2weeks"
 
-# source ~/.completion-for-pnpm.zsh
-
 mf() {
     micro $(fzf --preview="bat -f {}" --query="$1")
 }
@@ -86,4 +84,3 @@ mf() {
 export "MICRO_TRUECOLOR=1"
 
 . /usr/share/nvm/init-nvm.sh
-
