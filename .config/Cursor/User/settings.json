@@ -1,4 +1,5 @@
 {
+  "window.commandCenter": 1,
   "editor.fontFamily": "'SauceCodePro Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Noto Color Emoji'",
   "terminal.external.linuxExec": "ghostty",
   "editor.fontWeight": "600",
@@ -12,6 +13,7 @@
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.workingDirectories": [{ "mode": "auto" }],
   "editor.tabSize": 2,
   "editor.linkedEditing": true,
   "editor.cursorSurroundingLines": 15,
@@ -19,9 +21,6 @@
   "tailwindCSS.experimental.classRegex": [
     ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
-  "supermaven.enable": {
-    "go": false
-  },
   // we try to make semantic highlighting look good
   "editor.semanticHighlighting.enabled": true,
   // prevent VSCode from modifying the terminal colors
@@ -33,5 +32,28 @@
   "gopls": {
     "ui.semanticTokens": true
   },
-  "workbench.colorTheme": "Catppuccin Mocha"
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "cursor.cpp.enablePartialAccepts": true,
+  "githubPullRequests.queries": [
+    {
+      "label": "Waiting For My Review",
+      "query": "is:open review-requested:${user}"
+    },
+    {
+      "label": "Assigned To Me",
+      "query": "is:open assignee:${user}"
+    },
+    {
+      "label": "Created By Me",
+      "query": "is:open author:${user}"
+    },
+    {
+      "label": "Closed",
+      "query": "is:closed"
+    }
+  ],
+  "cursor.composer.shouldAllowCustomModes": true,
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.minimap.enabled": true,
+  "cursor.chat.terminalShowHoverHint": false
 }
