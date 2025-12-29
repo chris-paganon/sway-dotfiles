@@ -84,4 +84,6 @@ mf() {
 }
 
 export "MICRO_TRUECOLOR=1"
-source /home/chris/.config/broot/launcher/bash/br
+
+. /usr/share/nvm/init-nvm.sh
+
