@@ -4,6 +4,8 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+include /etc/sway/config.d/*
+
 # Catpuccin theme colors
 set $rosewater #f5e0dc
 set $flamingo #f2cdcd
@@ -332,7 +334,6 @@ bar swaybar_command waybar
 
 gaps inner 10
 default_border pixel
-exec /usr/share/sway-contrib/inactive-windows-transparency.py -g -o 0.95
 
 #
 # SwayFX stuff:
