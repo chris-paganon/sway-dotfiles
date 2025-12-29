@@ -68,7 +68,6 @@ Replace $term in `~/.config/sway/config` with `ghostty`
 - Enable `zsh` as default: https://wiki.archlinux.org/title/Command-line_shell#Changing_your_default_shell
 - Get a nice wallpaper and open nitrogen to set it
 
-#### Install flatpak software from `flatpak.md`
 #### Software with manual install
 - install vscode extensions from dotfiles `extensions.md`
 
