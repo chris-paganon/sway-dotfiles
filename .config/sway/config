@@ -150,6 +150,7 @@ bindsym $mod+Mod1+Space exec ~/.config/fuzzel/fuzzel-tmuxp.sh
 
 bindsym Mod1+x exec grimshot copy area
 bindsym Mod1+Shift+x exec grimshot savecopy area "$HOME/Pictures/screenshots/$(date +%Y-%m-%dT%H:%M:%S%Z).jpg"
+bindsym Mod1+Control+x exec grim -g "$(slurp)" - | swappy -f - -o "$HOME/Pictures/screenshots/$(date +%Y-%m-%dT%H:%M:%S%Z).jpg"
 bindsym $mod+Mod1+x exec ~/.config/sway/screenshot-upload.sh
 
 # Start specific apps
