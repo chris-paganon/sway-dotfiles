@@ -80,15 +80,15 @@ spicetify backup apply
 ```
 Then follow instructions here: https://github.com/catppuccin/spicetify
 
-- discord, 1st run: `betterdiscordctl -i flatpak install`. Then follow instructions here: https://github.com/catppuccin/discord
-- firefox: go here, click on mocha>mauve and install: https://github.com/catppuccin/firefox
-- many websites: foolow these instructions: https://github.com/catppuccin/userstyles/blob/main/docs/USAGE.md#all-userstyles
+- discord, 1st run: `betterdiscordctl install`. Then follow instructions here: https://github.com/catppuccin/discord
+- btop: enable it in the btop settings
+- micro: Open Micro, press `Ctrl+e`, type `set colorscheme catppuccin-mocha-transparent.micro
+- vivaldi: Follow instructions from https://github.com/catppuccin/vivaldi to install "Catppuccin Mocha Lavender Flat"
+- QT: https://github.com/catppuccin/qt5ct
+- many websites: follow these instructions: https://github.com/catppuccin/userstyles/blob/main/docs/USAGE.md#all-userstyles
 
 #### dotfiles
-- Setup etcfiles from my etcfiles repo
-	- Replace `/home/chris` with your home directory in `pacman.d/hooks/list-installed.hook`
-	- Add the files referenced in `lightdm-gtk-greeter.conf`
-- Setup dotfiles from here `git clone ... --recurse-submodules`
+- Copy/paste global environment variables: `sudo cat $HOME/dotfiles/docs/environment > /etc/environment`
 - Build go packages in ~/scripts/go: `go build .`
 
 ## Some services to enable
@@ -98,33 +98,6 @@ sudo systemctl enable --now bluetooth
 sudo systemctl enable --now docker.socket
 sudo systemctl enable --now tailscaled
 sudo systemctl enable --now snapper-cleanup.timer
+systemctl --user enable --now gcr-ssh-agent.socket
 ```
 - There are probably more systemd services to enable 💁
-
-## Not an ASUS laptop?
-`supergfxctl` and `asusctl`from my packages are for ASUS laptops only. Probably need to replace `supergfxctl` with [optimus manager](https://github.com/Askannz/optimus-manager) otherwise and remove `asusctl` (hopefully keyboard lights just work).
-
-Then change these .zsh aliases accordingly:
-```
-hybrid
-integrated
-fixlight
-```
-
-And the i3 config lines including `asusctl`.
-
-### Some optimus-manager pointers:
-PRIME render offload never worked: [https://wiki.archlinux.org/title/PRIME#PRIME_render_offload](https://wiki.archlinux.org/title/PRIME#PRIME_render_offload) (GPU never actually turns off)
-
-Instead, working setup with [https://github.com/Askannz/optimus-manager](https://github.com/Askannz/optimus-manager) ([Power management D3 config in hybrid](https://github.com/Askannz/optimus-manager/wiki/A-guide--to-power-management-options#configuration-1--dynamic-power-management-inside-the-nvidia-driver-runtime-d3-power-management))
-```
-/etc/optimus-manaher/optimus-manager.conf 
-
-[optimus]
-startup_mode=hybrid 
-
-[nvidia]
-dynamic_power_management=fine
-```
-
-But to truly save battery, need to switch to integrate graphics somehow ([config 2, 3 or 4](https://github.com/Askannz/optimus-manager/wiki/A-guide--to-power-management-options))

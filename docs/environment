@@ -1,0 +1,15 @@
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+EDITOR=micro
+
+QT_STYLE_OVERRIDE=adwaita
+QT_QPA_PLATFORM=wayland
+QT_QPA_PLATFORMTHEME=qt5ct
+
+XDG_SESSION_DESKTOP=sway
+
+# for xdg-open - avoids running xprop which hangs if Xwayland is not running:
+DE=generic
