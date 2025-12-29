@@ -84,7 +84,7 @@ Then follow instructions here: https://github.com/catppuccin/spicetify
 - btop: enable it in the btop settings
 - micro: Open Micro, press `Ctrl+e`, type `set colorscheme catppuccin-mocha-transparent.micro
 - vivaldi: Follow instructions from https://github.com/catppuccin/vivaldi to install "Catppuccin Mocha Lavender Flat"
-- QT: https://github.com/catppuccin/qt5ct
+- QT: Open the qt5ct & qt6ct settings apps and apply
 - many websites: follow these instructions: https://github.com/catppuccin/userstyles/blob/main/docs/USAGE.md#all-userstyles
 
 #### dotfiles
