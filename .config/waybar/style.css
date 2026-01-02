@@ -23,27 +23,26 @@
 #workspaces button {
   color: @mauve;
   padding: 0.2rem 0.6rem;
-  border-radius: 0px
+  border-radius: 0px;
 }
 
-#workspaces button.focused, 
+#workspaces button.focused,
 #workspaces button.active {
   color: @base;
   background-color: @mauve;
 }
-#workspaces button.focused:first-child, 
+#workspaces button.focused:first-child,
 #workspaces button.active:first-child {
   border-radius: 2rem 0 0 2rem;
 }
-#workspaces button.focused:last-child, 
+#workspaces button.focused:last-child,
 #workspaces button.active:last-child {
   border-radius: 0 2rem 2rem 0;
 }
-#workspaces button.focused:only-child, 
+#workspaces button.focused:only-child,
 #workspaces button.active:only-child {
   border-radius: 2rem;
 }
-
 
 #workspaces button.hover {
   color: @base;
@@ -54,7 +53,6 @@
   background-color: #eb4d4b;
 }
 
-
 #custom-music,
 #tray,
 #backlight,
@@ -62,6 +60,7 @@
 #battery,
 #pulseaudio,
 #custom-lock,
+#custom-notification,
 #network {
   background-color: @surface0;
   padding: 0.2rem 0.8rem;
@@ -90,8 +89,9 @@
   color: @yellow;
 }
 
-#backlight, #battery {
-    border-radius: 0;
+#backlight,
+#battery {
+  border-radius: 0;
 }
 
 #pulseaudio {

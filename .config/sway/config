@@ -76,10 +76,13 @@ output DP-1 res 1920x1080 scale 1 pos 1920 0
 output * allow_tearing yes
 output * max_render_time off
 
+focus_on_window_activation focus
+
 ### Autostart
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gnome-keyring-daemon --start --components=secrets
 
+exec swaync
 exec slimbookbattery --minimize
 exec nm-applet
 
@@ -160,6 +163,8 @@ bindsym $mod+Control+x exec ~/.config/sway/screenshot-upload.sh --edit
 # Start specific apps
 bindsym Mod1+f exec vivaldi
 bindsym Mod1+Control+f exec $start_on_next vivaldi
+
+bindsym Mod1+n exec swaync-client -t -sw
 
 bindsym Mod1+t exec $term
 bindsym Mod1+a exec ghostty -e ~/.config/tmux/open-main-tmux.sh
@@ -370,8 +375,8 @@ corner_radius 5
 smart_corner_radius enable
 
 # SwayFX also features window drop shadows, which, of course, can be enabled at any time
-shadows disable
-# shadows_on_csd enable 
+shadows disabled
+shadows_on_csd disabled
 
 # You can also offset the shadow's position, make unfocused windows have different shadows, give shadows a nondefault color, and blur shadows
 # shadow_inactive_color #0000007F
