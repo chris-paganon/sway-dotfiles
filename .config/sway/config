@@ -160,11 +160,16 @@ bindsym $mod+Mod1+x exec ~/.config/sway/screenshot-upload.sh
 bindsym Mod1+Control+x exec grim -g "$(slurp)" - | swappy -f - -o "$HOME/Pictures/screenshots/$(date +%Y-%m-%dT%H:%M:%S%Z).jpg"
 bindsym $mod+Control+x exec ~/.config/sway/screenshot-upload.sh --edit
 
+bindsym Mod1+n exec swaync-client -t -sw
+
 # Start specific apps
 bindsym Mod1+f exec vivaldi
 bindsym Mod1+Control+f exec $start_on_next vivaldi
+bindsym $mod+f [app_id="vivaldi-stable"] focus
 
-bindsym Mod1+n exec swaync-client -t -sw
+bindsym Mod1+e exec pcmanfm-qt
+bindsym Mod1+Control+e exec $start_on_next pcmanfm-qt
+bindsym $mod+e [app_id="pcmanfm-qt"] focus
 
 bindsym Mod1+t exec $term
 bindsym Mod1+a exec ghostty -e ~/.config/tmux/open-main-tmux.sh
