@@ -78,6 +78,8 @@ output * max_render_time off
 
 ### Autostart
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec gnome-keyring-daemon --start --components=secrets
+
 exec slimbookbattery --minimize
 exec nm-applet
 
