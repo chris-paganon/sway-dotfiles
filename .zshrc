@@ -81,6 +81,7 @@ mf() {
     micro $(fzf --preview="bat -f {}" --query="$1")
 }
 
+export "SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh"
 export "MICRO_TRUECOLOR=1"
 
 . /usr/share/nvm/init-nvm.sh
