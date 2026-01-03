@@ -22,7 +22,6 @@ func main() {
 
 	client, err := sway.New(ctx)
 	if err != nil {
-
 		log.Fatal("no client", err)
 	}
 
@@ -44,11 +43,6 @@ func main() {
 	}
 
 	focusedWorkspace := workspaces[focusedWorkspaceIndex]
-
-	fmt.Print("focusedWorkspace")
-	fmt.Println(focusedWorkspace.Name)
-	focusedWorkspaceName := focusedWorkspace.Name
-
 	realOutputs, err := getSortedOutputs(client, ctx)
 	if err != nil {
 		log.Fatal(err)
@@ -59,11 +53,17 @@ func main() {
 		log.Fatal(err)
 	}
 
-	windowToSwapWith := workspaceToSwapWith.Nodes[0].ID
+	windowToSwapWith := workspaceToSwapWith.Nodes[0]
 
-	client.RunCommand(ctx, fmt.Sprintf("move container to workspace %s", workspaceToSwapWith.Name))
-	client.RunCommand(ctx, fmt.Sprintf("[con_id=\"%d\"] focus", windowToSwapWith))
-	client.RunCommand(ctx, fmt.Sprintf("move container to workspace %s", focusedWorkspaceName))
+	_, err = client.RunCommand(ctx, fmt.Sprintf("swap container with con_id %d", windowToSwapWith.ID))
+	if (err != nil) {
+		log.Fatal(err)
+	}
+
+	_, err = client.RunCommand(ctx, fmt.Sprintf("workspace number %s", workspaceToSwapWith.Name))
+	if (err != nil) {
+		log.Fatal(err)
+	}
 }
 
 func getSwapDirection() (string, error) {
