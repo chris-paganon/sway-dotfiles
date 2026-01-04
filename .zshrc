@@ -62,7 +62,8 @@ alias aliasnpm='alias | grep npm'
 
 # specific tools aliases
 alias cd="z"
-alias b='nitrogen --restore'
+alias lscd="tmux split-window -b -l 80% ~/.config/tmux/lscd-runner.sh"
+
 alias dockerstop="docker stop \$(docker ps -q)"
 alias dockerstart="docker start \$(docker ps -qa)"
 alias be="~/.config/tmux/plutaro-full-stack.sh"
