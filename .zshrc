@@ -87,7 +87,8 @@ lscd() {
         return
     fi
     
-    tmux split-window -b -l 30% ~/.config/tmux/lscd-runner.sh
+    current_pane_id=$(tmux list-panes | grep '(active)' | grep -o '%[0-9]\+')
+    tmux split-window -b -l 30% "~/.config/tmux/lscd-runner.sh $current_pane_id"
     tmux last-pane
 }
 

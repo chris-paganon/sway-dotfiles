@@ -2,6 +2,7 @@
 
 set -e
 
+pane_id="$1"
 last_path=""
 current_path=""
 
@@ -11,11 +12,11 @@ if [[ -z $TMUX ]]; then
 fi
 
 print_new_directory_content() {
-  current_path=$(tmux display-message -p -t 1 '#{pane_current_path}')
+  current_path=$(tmux display-message -p -t "$pane_id" '#{pane_current_path}')
 
   if [[ "$current_path" != "$last_path" ]]; then
     echo "$current_path"
-    lsd -a "$current_path"
+    lsd -A "$current_path"
     echo ""
     
     last_path="$current_path"
