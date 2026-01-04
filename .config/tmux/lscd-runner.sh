@@ -5,6 +5,11 @@ set -e
 last_path=""
 current_path=""
 
+if [[ -z $TMUX ]]; then
+  echo "this script only runs inside tmux"
+  exit 1
+fi
+
 print_new_directory_content() {
   current_path=$(tmux display-message -p -t 1 '#{pane_current_path}')
 

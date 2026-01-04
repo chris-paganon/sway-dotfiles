@@ -62,7 +62,6 @@ alias aliasnpm='alias | grep npm'
 
 # specific tools aliases
 alias cd="z"
-alias lscd="tmux split-window -b -l 80% ~/.config/tmux/lscd-runner.sh"
 
 alias dockerstop="docker stop \$(docker ps -q)"
 alias dockerstart="docker start \$(docker ps -qa)"
@@ -80,6 +79,16 @@ alias cleanlogs="sudo journalctl --vacuum-time=2weeks"
 
 mf() {
     micro $(fzf --preview="bat -f {}" --query="$1")
+}
+
+lscd() {
+    if [[ -z $TMUX ]]; then
+        echo "this function only run inside tmux"
+        return
+    fi
+    
+    tmux split-window -b -l 30% ~/.config/tmux/lscd-runner.sh
+    tmux last-pane
 }
 
 export "SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh"
