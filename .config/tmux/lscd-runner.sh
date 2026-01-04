@@ -16,7 +16,7 @@ print_new_directory_content() {
 
   if [[ "$current_path" != "$last_path" ]]; then
     echo "$current_path"
-    lsd -A "$current_path"
+    lsd -A --color=always "$current_path"
     echo ""
     
     last_path="$current_path"
