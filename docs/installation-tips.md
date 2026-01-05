@@ -86,6 +86,26 @@ Replace $term in `~/.config/sway/config` with `ghostty`
 
 #### Software with manual install
 
+##### Gnome keyring
+
+For Gnome keyring to auto-login main keyring on login, edit `/etc/pam.d/login` ([reference](https://wiki.archlinux.org/title/GNOME/Keyring#PAM_step)):
+
+```bash
+#%PAM-1.0
+
+auth       requisite    pam_nologin.so
+auth       include      system-local-login
+auth       optional     pam_gnome_keyring.so # add at the bottom of auth
+account    include      system-local-login
+session    include      system-local-login
+session    optional     pam_gnome_keyring.so auto_start # add at the bottom of session
+password   include      system-local-login
+```
+
+Then check the checkbox 1st time it prompts for it.
+
+##### Others
+
 - install vscode extensions from dotfiles `extensions.md`
 - add `org.freedesktop.Notifications.service` to `/usr/share/dbus-1/services` with the following content to fix `swaync`:
 
