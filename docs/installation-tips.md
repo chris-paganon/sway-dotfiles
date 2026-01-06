@@ -106,6 +106,7 @@ Then check the checkbox 1st time it prompts for it.
 
 ##### Others
 
+- install tmux plugins by doing `press prefix + I (capital i, as in Install)` inside tmux
 - install vscode extensions from dotfiles `extensions.md`
 - add `org.freedesktop.Notifications.service` to `/usr/share/dbus-1/services` with the following content to fix `swaync`:
 
