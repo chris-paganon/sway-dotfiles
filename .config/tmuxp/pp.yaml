@@ -15,16 +15,16 @@ windows:
       enter: false
     focus: true
 
-- window_name: library
+- window_name: modules
   layout: main-horizontal
   options:
     main-pane-height: 80%
   panes:
   - shell_command:
-    - cd ./component-library-main
+    - cd ./template-internal-modules
   - shell_command:
-    - cd ./component-library-main/src/mcp
-    - cmd: pnpm build:watch
+    - cd ./component-library-main/fontend
+    - cmd: pnpm run dev
       enter: false
     focus: true
 
