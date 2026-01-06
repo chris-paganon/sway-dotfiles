@@ -171,6 +171,10 @@ bindsym Mod1+e exec pcmanfm-qt
 bindsym Mod1+Control+e exec $start_on_next pcmanfm-qt
 bindsym $mod+e [app_id="pcmanfm-qt"] focus
 
+bindsym Mod1+d exec discord
+bindsym Mod1+Control+d exec $start_on_next discord
+bindsym $mod+d [class="discord"] focus
+
 bindsym Mod1+t exec $term
 bindsym Mod1+a exec ghostty -e ~/.config/tmux/open-main-tmux.sh
 bindsym $mod+a [con_mark="terminal"] scratchpad show
