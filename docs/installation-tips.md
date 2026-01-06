@@ -104,10 +104,13 @@ password   include      system-local-login
 
 Then check the checkbox 1st time it prompts for it.
 
+##### VSCode & Cursor
+- install vscode extensions from dotfiles `extensions.md`
+- press `ctrl+shift+p`, open `configureRuntimeArguments` and add this line to let vscode/cursor use the gnome keyring: `"password-store": "gnome-libsecret"`
+
 ##### Others
 
 - install tmux plugins by doing `press prefix + I (capital i, as in Install)` inside tmux
-- install vscode extensions from dotfiles `extensions.md`
 - add `org.freedesktop.Notifications.service` to `/usr/share/dbus-1/services` with the following content to fix `swaync`:
 
 ```
