@@ -23,7 +23,7 @@ windows:
   - shell_command:
     - cd ./template-internal-modules
   - shell_command:
-    - cd ./component-library-main/fontend
+    - cd ./template-internal-modules/fontend
     - cmd: pnpm run dev
       enter: false
     focus: true

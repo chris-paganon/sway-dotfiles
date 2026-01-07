@@ -2,5 +2,4 @@ session_name: projects
 start_directory: ~/Documents/plutaro/code
 
 windows:
-- window_name: main
-  focus: true
+- focus: true
