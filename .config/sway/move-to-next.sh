@@ -4,4 +4,4 @@
 # Get the current workspace
 NEXT_AVAILABLE_WORKSPACE=$(echo $(swaymsg -t get_workspaces | jq '.[] | .num' | sort -n) | awk '{for(i=1;i<=NF+1;i++)if($i!=i){print i;exit}}')
 
-swaymsg move container to workspace $NEXT_AVAILABLE_WORKSPACE && swaymsg workspace number $NEXT_AVAILABLE_WORKSPACE
+swaymsg move container to workspace $NEXT_AVAILABLE_WORKSPACE \; workspace number $NEXT_AVAILABLE_WORKSPACE
