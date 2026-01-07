@@ -166,6 +166,7 @@ bindsym Mod1+n exec swaync-client -t -sw
 bindsym Mod1+f exec vivaldi
 bindsym Mod1+Control+f exec $start_on_next vivaldi
 bindsym $mod+f [app_id="vivaldi-stable"] focus
+for_window [title="Bitwarden - Vivald"] floating enable; move position cursor
 
 bindsym Mod1+e exec pcmanfm-qt
 bindsym Mod1+Control+e exec $start_on_next pcmanfm-qt
