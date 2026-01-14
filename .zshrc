@@ -63,7 +63,7 @@ bindkey '^[[1;3C' vi-forward-word
 
 # common aliases
 alias sudo="sudo "
-alias sway="sway --unsupported-gpu" 
+alias s="sway --unsupported-gpu" 
 alias c='clear'
 alias ls='lsd'
 alias ll='ls -al'
@@ -73,13 +73,17 @@ alias lt='lsd --tree'
 alias ltd='lt --depth'
 alias copy="wl-copy"
 alias paste="wl-paste"
-alias gco='git checkout --no-guess'
-alias gcaam='git add -A && git commit -m'
-alias glolu='git log -u $(git rev-list --max-parents=0 HEAD) HEAD'
 alias sudogp='sudo SSH_AUTH_SOCK="$SSH_AUTH_SOCK" git push'
 alias grepm='grep -C 5 -B 5'
 alias duh="du -h --max-depth=1"
 alias duhs="du -h --max-depth=1 | sort -hr"
+
+# git
+alias gco='git checkout --no-guess'
+alias gcaam='git add -A && git commit -m'
+alias glolu='git log -u $(git rev-list --max-parents=0 HEAD) HEAD'
+alias glolg="glol | fzf -m --no-sort --preview='git show {2}' | awk '{print \$2}'"
+alias glolgc="glol | fzf -m --no-sort --preview='git show {2}' | awk '{print \$2}' | tee >(wl-copy)"
 
 # pacman aliases
 alias clean="yay -Sc"
