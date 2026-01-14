@@ -130,15 +130,18 @@ trough {
 .notification progress,
 .notification trough,
 .notification progressbar {
-  border-radius: 12.6px;
+  border-radius: 5px;
   padding: 3px 0;
 }
 
 /* control center */
 .control-center {
+  margin: 30px;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8), inset 0 0 0 1px #313244;
-  border-radius: 12.6px;
+  border: 2px solid #cba6f7;
+  border-radius: 5px;
   background-color: #1e1e2e;
+  opacity: 0.98;
   color: #cdd6f4;
   padding: 14px;
 }
