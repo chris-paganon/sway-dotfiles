@@ -9,7 +9,6 @@ bindkey -e
 # The following lines were added by compinstall
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _complete _ignored _approximate
-zstyle ':completion:*' format '[%d]'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' max-errors 1
 zstyle ':completion:*' menu select=long
@@ -26,7 +25,7 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
 zstyle ':completion:*' menu no
-# preview directory's content with eza when completing cd
+# preview directory's content with lsd when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'lsd -A --color=always --icon=always $realpath'
 zstyle ':fzf-tab:complete:z:*' fzf-preview 'lsd -A --color=always --icon=always $realpath'
 # custom fzf flags
@@ -133,4 +132,3 @@ export "SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh"
 export "MICRO_TRUECOLOR=1"
 
 . /usr/share/nvm/init-nvm.sh
-
