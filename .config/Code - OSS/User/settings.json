@@ -1,5 +1,4 @@
 {
-  "editor.fontFamily": "'SauceCodePro Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Noto Color Emoji'",
   "terminal.external.linuxExec": "ghostty",
   "editor.fontWeight": "600",
   "git.enableSmartCommit": true,
@@ -33,5 +32,6 @@
   "gopls": {
     "ui.semanticTokens": true
   },
-  "workbench.colorTheme": "Catppuccin Mocha"
+  "workbench.colorTheme": "Catppuccin Mocha",
+  "chat.disableAIFeatures": true
 }

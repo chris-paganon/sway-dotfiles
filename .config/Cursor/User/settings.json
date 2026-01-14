@@ -1,6 +1,5 @@
 {
   "window.commandCenter": 1,
-  "editor.fontFamily": "'SauceCodePro Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Noto Color Emoji'",
   "terminal.external.linuxExec": "ghostty",
   "editor.fontWeight": "600",
   "git.enableSmartCommit": true,
@@ -36,24 +35,36 @@
   "cursor.cpp.enablePartialAccepts": true,
   "githubPullRequests.queries": [
     {
+      "label": "Local Pull Request Branches",
+      "query": "default"
+    },
+    {
       "label": "Waiting For My Review",
-      "query": "is:open review-requested:${user}"
+      "query": "repo:${owner}/${repository} is:open review-requested:${user}"
     },
     {
       "label": "Assigned To Me",
-      "query": "is:open assignee:${user}"
+      "query": "repo:${owner}/${repository} is:open assignee:${user}"
     },
     {
       "label": "Created By Me",
-      "query": "is:open author:${user}"
+      "query": "repo:${owner}/${repository} is:open author:${user}"
     },
     {
       "label": "Closed",
-      "query": "is:closed"
+      "query": "repo:${owner}/${repository} is:closed"
+    },
+    {
+      "label": "All Open",
+      "query": "default"
     }
   ],
   "cursor.composer.shouldAllowCustomModes": true,
   "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.minimap.enabled": true,
-  "cursor.chat.terminalShowHoverHint": false
+  "cursor.chat.terminalShowHoverHint": false,
+  "cursor.cpp.disabledLanguages": ["plaintext"],
+  "explorer.confirmDelete": false,
+  "cursor.composer.shouldChimeAfterChatFinishes": true,
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }
