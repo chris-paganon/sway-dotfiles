@@ -81,8 +81,9 @@ alias duhs="du -h --max-depth=1 | sort -hr"
 alias gco='git checkout --no-guess'
 alias gcaam='git add -A && git commit -m'
 alias glolu='git log -u $(git rev-list --max-parents=0 HEAD) HEAD'
-alias glolg="glol | fzf -m --no-sort --preview='git show {2}' | awk '{print \$2}'"
-alias glolgc="glol | fzf -m --no-sort --preview='git show {2}' | awk '{print \$2}' | tee >(wl-copy)"
+alias glolo='git log --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%as) %C(bold blue)<%an>%Creset"'
+alias glolg="glolo | fzf -m --no-sort --preview='git show {1}' | awk '{print \$1}'"
+alias glolgc="glolo | fzf -m --no-sort --preview='git show {1}' | awk '{print \$1}' | tee >(wl-copy)"
 
 # pacman aliases
 alias clean="yay -Sc"
