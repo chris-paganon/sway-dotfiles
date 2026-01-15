@@ -3,17 +3,17 @@
   <object class="GtkMenu" id="menu">
     <child>
 		<object class="GtkMenuItem" id="copy">
-			<property name="label">Copy to Clipboard</property>
+			<property name="label">Copy to Clipboard (Alt+X)</property>
         </object>
 	</child>
 	<child>
         <object class="GtkMenuItem" id="save">
-			<property name="label">Save to File</property>
+			<property name="label">Save & Copy (Alt+Shift+X)</property>
         </object>
 	</child>
 	<child>
         <object class="GtkMenuItem" id="edit">
-			<property name="label">Edit with Swappy</property>
+			<property name="label">Edit with Swappy (Alt+Ctrl+X)</property>
         </object>
 	</child>
     <child>
@@ -21,7 +21,7 @@
     </child>
     <child>
 		<object class="GtkMenuItem" id="upload">
-			<property name="label">Upload</property>
+			<property name="label">Upload (Super+Alt+X)</property>
 		</object>
     </child>
   </object>
