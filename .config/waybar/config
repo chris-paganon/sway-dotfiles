@@ -18,9 +18,9 @@
         // "sway/language",
         "battery",
         "custom/notification",
+        "custom/screenshot",
         "clock",
         "tray",
-        "custom/screenshot",
         "custom/power"
     ],
     "keyboard-state": {
@@ -125,7 +125,7 @@
         "escape": true
     },
     "custom/screenshot": {
-        "format": "SC",
+        "format": "󰹑",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/screenshot_menu.xml",
@@ -140,7 +140,7 @@
         "format" : "⏻ ",
 		"tooltip": false,
 		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-file": "$HOME/.config/waybar/power_menu.xml",
 		"menu-actions": {
 			"shutdown": "shutdown",
 			"reboot": "reboot",

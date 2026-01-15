@@ -61,6 +61,7 @@
 #pulseaudio,
 #custom-lock,
 #custom-notification,
+#custom-screenshot,
 #network {
   background-color: @surface0;
   padding: 0.2rem 0.8rem;
@@ -117,6 +118,11 @@
   padding-left: 14px;
   border-radius: 2rem;
   color: @red;
+}
+
+#custom-screenshot {
+  color: @peach;
+  border-radius: 0;
 }
 
 #tray {
