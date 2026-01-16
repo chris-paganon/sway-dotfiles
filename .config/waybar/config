@@ -52,7 +52,7 @@
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%Y-%m-%d %H:%M}",
+        "format": "{:%Y-%m-%d %H:%M}  ",
         "on-click": "gsimplecal"
     },
     "backlight": {
@@ -145,6 +145,7 @@
 			"shutdown": "shutdown",
 			"reboot": "reboot",
             "lock": "swaylock -f",
+			"logout": "loginctl terminate-user $USER",
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
 		}
