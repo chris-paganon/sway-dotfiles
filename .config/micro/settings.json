@@ -1,4 +1,5 @@
 {
     "colorscheme": "catppuccin-mocha-transparent",
+	"tabsize": 2,
     "diffgutter": true
 }
