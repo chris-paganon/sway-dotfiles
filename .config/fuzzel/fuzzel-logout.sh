@@ -2,10 +2,11 @@
 
 start() {
   echo "shutdown"
-  echo "suspend"
   echo "reboot"
+  echo "suspend"
   echo "hibernate"
   echo "logout"
+  echo "lock"
   echo "cancel"
 }
 
@@ -16,7 +17,7 @@ receiver() {
   echo $fuzzel_output;
 
   if [[ -n "$fuzzel_output" ]]; then
-    if [[ "$fuzzel_output" == "logout" ]]; then
+    if [[ "$fuzzel_output" == "lock" ]]; then
       swaylock -f
     elif [[ "$fuzzel_output" == "suspend" ]]; then
       systemctl suspend
@@ -24,6 +25,8 @@ receiver() {
       reboot
     elif [[ "$fuzzel_output" == "hibernate" ]]; then
       systemctl hibernate
+    elif [[ "$fuzzel_output" == "logout" ]]; then
+			loginctl terminate-user $USER
     elif [[ "$fuzzel_output" == "shutdown" ]]; then
       shutdown now
     fi
