@@ -8,7 +8,7 @@
 	</child>
 	<child>
         <object class="GtkMenuItem" id="save">
-			<property name="label">Save & Copy (Alt+Shift+X)</property>
+			<property name="label">Save and Copy (Alt+Shift+X)</property>
         </object>
 	</child>
 	<child>
