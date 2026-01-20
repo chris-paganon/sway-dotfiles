@@ -1,5 +1,5 @@
 {
-  "window.commandCenter": 1,
+  "window.commandCenter": true,
   "terminal.external.linuxExec": "ghostty",
   "editor.fontWeight": "600",
   "git.enableSmartCommit": true,
@@ -12,13 +12,20 @@
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
   "editor.tabSize": 2,
   "editor.linkedEditing": true,
   "editor.cursorSurroundingLines": 15,
   "editor.cursorStyle": "block",
   "tailwindCSS.experimental.classRegex": [
-    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+    [
+      "cn\\(([^)]*)\\)",
+      "(?:'|\"|`)([^']*)(?:'|\"|`)"
+    ]
   ],
   // we try to make semantic highlighting look good
   "editor.semanticHighlighting.enabled": true,
@@ -26,7 +33,6 @@
   "terminal.integrated.minimumContrastRatio": 1,
   // make the window's titlebar use the workbench colors
   "window.titleBarStyle": "custom",
-
   // applicable if you use Go, this is an opt-in flag!
   "gopls": {
     "ui.semanticTokens": true
@@ -63,8 +69,10 @@
   "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.minimap.enabled": true,
   "cursor.chat.terminalShowHoverHint": false,
-  "cursor.cpp.disabledLanguages": ["plaintext"],
+  "cursor.cpp.disabledLanguages": [
+    "plaintext"
+  ],
   "explorer.confirmDelete": false,
   "cursor.composer.shouldChimeAfterChatFinishes": true,
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
 }
