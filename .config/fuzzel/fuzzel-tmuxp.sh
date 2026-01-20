@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fuzzel_output=$(tmuxp ls | fuzzel --dmenu)
+fuzzel_output=$(tmuxp ls | grep -E '^  [a-zA-Z0-9-]+$' | sed 's/^  //' | fuzzel --dmenu)
 
 if [[ -n "$fuzzel_output" ]]; then
   # If we are already attached to the session somehwere else: maybe create a new window in the current directory, then focus the existing session instead
