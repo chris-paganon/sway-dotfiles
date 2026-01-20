@@ -118,15 +118,44 @@ mf() {
     micro $(fzf --preview="bat -f {}" --query="$1")
 }
 
-lscd() {
-    if [[ -z $TMUX ]]; then
-        echo "this function only run inside tmux"
-        return
+# search and replace
+sr() {
+    if [[ -z "$1" || -z "$2" ]]; then
+        echo "Usage: sr <search> <replace>"
+        echo "Search uses ripgrep, replace uses sd"
+        echo "Example: sr 'old-text' 'new-text'"
+        echo "Expands to: rg --files-with-matches 'old-text' | xargs sd 'old-text' 'new-text'"
+        return 1
     fi
-    
-    current_pane_id=$(tmux list-panes | grep '(active)' | grep -o '%[0-9]\+')
-    tmux split-window -b -l 30% "~/.config/tmux/lscd-runner.sh $current_pane_id"
-    tmux last-pane
+
+    rg --files-with-matches "$1" | xargs sd "$1" "$2"
+}
+
+
+manllama() {
+    local man_cmd="$1"
+    local query="$2"
+    local model="$3"
+
+    if [[ -z "$query" || -z "$man_cmd" ]]; then
+        echo "Usage: manllama <man-cmd> <query> <model>"
+        echo "Model can be medium or high (default: medium)"
+        echo "Medium model is mistral, High is devstral"
+        return 1
+    fi
+
+    local model_name="mistral"
+    if [[ "$model" == "high" ]]; then
+        model_name="devstral"
+    fi
+
+    local documentation=$(eval "$man_cmd")
+    if [[ -z "$documentation" ]]; then
+        echo "Error: No documentation found for $man_cmd"
+        return 1
+    fi
+
+    ollama run $model_name "You will now help mew answer a question using some potentially relevant documentation. Here is the documentation: <documentation>$documentation</documentation>. If the exact answer to the query is not in the documentation, DON'T ANSWER and simply say 'the documentation provided does not contain the information you are looking for'. If you provide any unverified information, ALWAYS mention what is unverified from the documentation. Now answer my question: <question>$query</question>. DON'T ANSWER UNVERIFIED INFORMATION."
 }
 
 export "SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh"
