@@ -133,7 +133,8 @@
 			"copy": "grimshot copy area",
 			"save": "grimshot savecopy area \"$HOME/Pictures/screenshots/$(date +%Y-%m-%dT%H:%M:%S%Z).jpg\"",
 			"upload": "$HOME/.config/sway/screenshot-upload.sh",
-			"edit": "grim -g \"$(slurp)\" - | swappy -f - -o \"$HOME/Pictures/screenshots/$(date +%Y-%m-%dT%H:%M:%S%Z).jpg\""
+			"edit": "grim -g \"$(slurp)\" - | swappy -f - -o \"$HOME/Pictures/screenshots/$(date +%Y-%m-%dT%H:%M:%S%Z).jpg\"",
+			"edit_upload": "$HOME/.config/sway/screenshot-upload.sh --edit"
 		}
     },
     "custom/power": {
