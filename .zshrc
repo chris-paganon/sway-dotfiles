@@ -74,8 +74,8 @@ alias copy="wl-copy"
 alias paste="wl-paste"
 alias sudogp='sudo SSH_AUTH_SOCK="$SSH_AUTH_SOCK" git push'
 alias grepm='grep -C 5 -B 5'
-alias duh="du -h --max-depth=1"
-alias duhs="du -h --max-depth=1 | sort -hr"
+alias si=swayimg
+alias sig='swayimg -g'
 
 # git
 alias gco='git checkout --no-guess'
