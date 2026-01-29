@@ -118,6 +118,15 @@ mf() {
     micro $(fzf --preview="bat -f {}" --query="$1")
 }
 
+mrg() {
+    if [[ -z "$1" ]]; then
+        echo "Usage mrg <ripgrep string>"
+        return 1
+    fi
+		micro $(rg $1 --files-with-matches | fzf --preview="rg -p -A 4 -B 2 $1 {}")
+    # micro $(rg $1 --files-with-matches | fzf --preview="bat -f {}")
+}
+
 # search and replace
 sr() {
     if [[ -z "$1" || -z "$2" ]]; then
