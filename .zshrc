@@ -171,3 +171,8 @@ export "SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh"
 export "MICRO_TRUECOLOR=1"
 
 . /usr/share/nvm/init-nvm.sh
+
+# Workaround for default only applying after reboot
+if command -v nvm >/dev/null 2>&1; then
+    nvm use default >/dev/null
+fi
