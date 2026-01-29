@@ -113,6 +113,8 @@ input type:touchpad {
 
 input type:keyboard {
     xkb_numlock enabled
+    xkb_layout "us,ca"
+    xkb_options "grp:alt_shift_toggle"
 }
 #
 #   input type:keyboard {
