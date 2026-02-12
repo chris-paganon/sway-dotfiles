@@ -124,7 +124,6 @@ mrg() {
         return 1
     fi
 		micro $(rg $1 --files-with-matches | fzf --preview="rg -p -A 4 -B 2 $1 {}")
-    # micro $(rg $1 --files-with-matches | fzf --preview="bat -f {}")
 }
 
 # search and replace
