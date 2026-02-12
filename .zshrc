@@ -148,13 +148,13 @@ manllama() {
     if [[ -z "$query" || -z "$man_cmd" ]]; then
         echo "Usage: manllama <man-cmd> <query> <model>"
         echo "Model can be medium or high (default: medium)"
-        echo "Medium model is mistral, High is devstral"
+        echo "Medium model is mistral, High is glm-4.7-flash"
         return 1
     fi
 
     local model_name="mistral"
     if [[ "$model" == "high" ]]; then
-        model_name="devstral"
+        model_name="glm-4.7-flash"
     fi
 
     local documentation=$(eval "$man_cmd")
