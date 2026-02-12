@@ -168,6 +168,9 @@ manllama() {
 
 export "SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh"
 export "MICRO_TRUECOLOR=1"
+export "ANDROID_HOME=/home/chris/Android/Sdk"
+export "PATH=$PATH:$ANDROID_HOME/emulator"
+export "PATH=$PATH:$ANDROID_HOME/platform-tools"
 
 . /usr/share/nvm/init-nvm.sh
 
