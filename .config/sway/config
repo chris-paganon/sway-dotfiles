@@ -76,8 +76,6 @@ output DP-1 res 1920x1080 scale 1 pos 1920 0
 output * allow_tearing yes
 output * max_render_time off
 
-focus_on_window_activation focus
-
 ### Autostart
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec gnome-keyring-daemon --start --components=secrets
