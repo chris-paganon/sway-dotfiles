@@ -70,7 +70,7 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='lsd --tree'
 alias ltd='lt --depth'
-alias copy="wl-copy"
+alias copy="tee >(wl-copy)"
 alias paste="wl-paste"
 alias sudogp='sudo SSH_AUTH_SOCK="$SSH_AUTH_SOCK" git push'
 alias grepm='grep -C 5 -B 5'
