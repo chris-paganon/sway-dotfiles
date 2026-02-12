@@ -114,11 +114,7 @@ input type:keyboard {
     xkb_layout "us,ca"
     xkb_options "grp:alt_shift_toggle"
 }
-#
-#   input type:keyboard {
-#       xkb_layout "eu"
-#   }
-#
+
 # You can also configure each device individually.
 # Read `man 5 sway-input` for more information about this section.
 
@@ -140,7 +136,6 @@ bindsym Mod1+Control+space exec $open_next; exec exec $menu
 # mouse button for dragging.
 floating_modifier $mod normal
 
-# Don't steal the focus
 focus_on_window_activation focus
 
 # Reload the configuration file
