@@ -271,6 +271,7 @@ bindsym $mod+Shift+space floating toggle
 # Move focus to the parent container
 bindsym $mod+p focus parent
 
+bindsym $mod+Escape workspace back_and_forth
 bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+a scratchpad show
 
