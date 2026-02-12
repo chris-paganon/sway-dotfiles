@@ -1,5 +1,5 @@
 session_name: pp
-start_directory: ~/Documents/plutaro/code
+start_directory: ~/Documents/plain/plutaro/code
 
 windows:
 - window_name: template
