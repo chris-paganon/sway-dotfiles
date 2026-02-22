@@ -114,6 +114,7 @@ alias fixtime="sudo sntp -S pool.ntp.org && sudo hwclock -w"
 # to remember
 alias cleanlogs="sudo journalctl --vacuum-time=2weeks"
 
+alias m=micro
 mf() {
     micro $(fzf --preview="bat -f {}" --query="$1")
 }
