@@ -5,7 +5,7 @@
   "git.confirmSync": false,
   "explorer.confirmDragAndDrop": false,
   "github.copilot.enable": {
-    "markdown": "true"
+    "markdown": "true",
   },
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
@@ -16,10 +16,10 @@
   "editor.cursorSurroundingLines": 15,
   "editor.cursorStyle": "block",
   "tailwindCSS.experimental.classRegex": [
-    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
   ],
   "supermaven.enable": {
-    "go": false
+    "go": false,
   },
   // we try to make semantic highlighting look good
   "editor.semanticHighlighting.enabled": true,
@@ -30,8 +30,8 @@
 
   // applicable if you use Go, this is an opt-in flag!
   "gopls": {
-    "ui.semanticTokens": true
+    "ui.semanticTokens": true,
   },
   "workbench.colorTheme": "Catppuccin Mocha",
-  "chat.disableAIFeatures": true
+  "chat.disableAIFeatures": true,
 }

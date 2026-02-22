@@ -22,10 +22,7 @@
   "editor.cursorSurroundingLines": 15,
   "editor.cursorStyle": "block",
   "tailwindCSS.experimental.classRegex": [
-    [
-      "cn\\(([^)]*)\\)",
-      "(?:'|\"|`)([^']*)(?:'|\"|`)"
-    ]
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
   // we try to make semantic highlighting look good
   "editor.semanticHighlighting.enabled": true,
@@ -69,10 +66,8 @@
   "editor.gotoLocation.multipleDefinitions": "goto",
   "editor.minimap.enabled": true,
   "cursor.chat.terminalShowHoverHint": false,
-  "cursor.cpp.disabledLanguages": [
-    "plaintext"
-  ],
+  "cursor.cpp.disabledLanguages": ["plaintext"],
   "explorer.confirmDelete": false,
   "cursor.composer.shouldChimeAfterChatFinishes": true,
-  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }
