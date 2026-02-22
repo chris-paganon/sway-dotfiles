@@ -70,14 +70,18 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='lsd --tree'
 alias ltd='lt --depth'
+alias cd="z"
+alias dcd='cd -$(d | fzf | cut -f1)'
 alias copy="tee >(wl-copy)"
 alias paste="wl-paste"
-alias sudogp='sudo SSH_AUTH_SOCK="$SSH_AUTH_SOCK" git push'
-alias grepm='grep -C 5 -B 5'
+
+# sway
 alias si=swayimg
 alias sig='swayimg -g'
+alias sc='swayimg -o mtime -g /home/chris/Pictures/screenshots'
 
 # git
+alias sudogp='sudo SSH_AUTH_SOCK="$SSH_AUTH_SOCK" git push'
 alias gco='git checkout --no-guess'
 alias gcaam='git add -A && git commit -m'
 alias glolu='git log -u $(git rev-list --max-parents=0 HEAD) HEAD'
@@ -98,8 +102,6 @@ alias aliasgit='alias | grep git'
 alias aliasnpm='alias | grep npm'
 
 # specific tools aliases
-alias cd="z"
-
 alias dockerstop="docker stop \$(docker ps -q)"
 alias dockerstart="docker start \$(docker ps -qa)"
 alias be="~/.config/tmux/plutaro-full-stack.sh"
