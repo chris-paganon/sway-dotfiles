@@ -5,6 +5,7 @@
 [safe]
 	directory = /etc/etcfiles
 	directory = ~/Documents
+	directory = /home/chris/Documents/mnt-kodi/containers/servarr
 
 [core]
 	pager = delta
