@@ -80,6 +80,7 @@ onlykey
 openssh
 os-prober
 otf-font-awesome
+pam_mount
 pcmanfm-qt
 perl-file-mimeinfo
 pipewire-audio

@@ -102,6 +102,11 @@ session    optional     pam_gnome_keyring.so auto_start # add at the bottom of s
 password   include      system-local-login
 ```
 
+For gocrypt to auto-mount a directory:
+- Make sure `pam_mount` is installed
+- Add this to `etc/security/pam_mount.conf.xml`: https://wiki.archlinux.org/title/Gocryptfs#Mounting_automatically_with_pam_mount
+- Add the bold lines from https://wiki.archlinux.org/title/Pam_mount#Login_manager_configuration to `/etc/pam.d/system-login`
+
 Then check the checkbox 1st time it prompts for it.
 
 ##### VSCode & Cursor
