@@ -85,9 +85,8 @@ alias sudogp='sudo SSH_AUTH_SOCK="$SSH_AUTH_SOCK" git push'
 alias gco='git checkout --no-guess'
 alias gcaam='git add -A && git commit -m'
 alias glolu='git log -u $(git rev-list --max-parents=0 HEAD) HEAD'
-alias glolo='git log --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%as) %C(bold blue)<%an>%Creset"'
-alias glolg="glolo | fzf -m --no-sort --preview='git show {1}' | awk '{print \$1}'"
-alias glolgc="glolo | fzf -m --no-sort --preview='git show {1}' | awk '{print \$1}' | tee >(wl-copy)"
+alias glolg="glola | awk -v OFS='\t' '{for(i=1;i<=NF;i++) if(\$i==\"-\") {hash=\$(i-1); break} if(hash) print hash, \$0}' | fzf -m --no-sort -d '\t' --with-nth 2.. --preview='git show {1}' | cut -f1"
+alias glolgc="glola | awk -v OFS='\t' '{for(i=1;i<=NF;i++) if(\$i==\"-\") {hash=\$(i-1); break} if(hash) print hash, \$0}' | fzf -m --no-sort -d '\t' --with-nth 2.. --preview='git show {1}' | cut -f1 | tee >(wl-copy)"
 
 # pacman aliases
 alias clean="yay -Sc"
@@ -126,7 +125,7 @@ mrg() {
         echo "Usage mrg <ripgrep string>"
         return 1
     fi
-		micro $(rg $1 --files-with-matches | fzf --preview="rg -p -A 4 -B 2 $1 {}")
+    micro $(rg $1 --files-with-matches | fzf --preview="rg -p -A 4 -B 2 $1 {}")
 }
 
 # search and replace
