@@ -54,6 +54,8 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
 
+. ~/scripts/fzf.sh
+
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
@@ -71,7 +73,6 @@ alias lla='ls -la'
 alias lt='lsd --tree'
 alias ltd='lt --depth'
 alias cd="z"
-alias dcd='cd -$(d | fzf | cut -f1)'
 alias copy="tee >(wl-copy)"
 alias paste="wl-paste"
 
@@ -85,8 +86,6 @@ alias sudogp='sudo SSH_AUTH_SOCK="$SSH_AUTH_SOCK" git push'
 alias gco='git checkout --no-guess'
 alias gcaam='git add -A && git commit -m'
 alias glolu='git log -u $(git rev-list --max-parents=0 HEAD) HEAD'
-alias glolg="glola | awk -v OFS='\t' '{for(i=1;i<=NF;i++) if(\$i==\"-\") {hash=\$(i-1); break} if(hash) print hash, \$0}' | fzf -m --no-sort -d '\t' --with-nth 2.. --preview='git show {1}' | cut -f1"
-alias glolgc="glola | awk -v OFS='\t' '{for(i=1;i<=NF;i++) if(\$i==\"-\") {hash=\$(i-1); break} if(hash) print hash, \$0}' | fzf -m --no-sort -d '\t' --with-nth 2.. --preview='git show {1}' | cut -f1 | tee >(wl-copy)"
 
 # pacman aliases
 alias clean="yay -Sc"
@@ -116,17 +115,6 @@ alias fixtime="sudo sntp -S pool.ntp.org && sudo hwclock -w"
 alias cleanlogs="sudo journalctl --vacuum-time=2weeks"
 
 alias m=micro
-mf() {
-    micro $(fzf --preview="bat -f {}" --query="$1")
-}
-
-mrg() {
-    if [[ -z "$1" ]]; then
-        echo "Usage mrg <ripgrep string>"
-        return 1
-    fi
-    micro $(rg $1 --files-with-matches | fzf --preview="rg -p -A 4 -B 2 $1 {}")
-}
 
 # search and replace
 sr() {
