@@ -1,5 +1,6 @@
 {
-    "colorscheme": "catppuccin-mocha-transparent",
-	"tabsize": 2,
-    "diffgutter": true
+  "colorscheme": "catppuccin-mocha-transparent",
+  "tabsize": 2,
+  "diffgutter": true,
+  "softwrap": true
 }
