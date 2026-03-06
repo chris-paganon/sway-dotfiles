@@ -209,19 +209,19 @@ for_window [app_id="gsimplecal"] move position cursor
 #
 # Moving around:
 #
-# Or use $mod+[up|down|left|right]
+# Move focus
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# Move the focused window
+# Move focused window
 bindsym $mod+Mod1+Left move left
 bindsym $mod+Mod1+Down move down
 bindsym $mod+Mod1+Up move up
 bindsym $mod+Mod1+Right move right
 
-# Move container to left & right output
+# Move focused window to left & right output
 bindsym --whole-window $mod+button8 move container to output left; workspace next_on_output; focus output left
 bindsym --whole-window $mod+button9 move container to output right; workspace next_on_output; focus output right
 
