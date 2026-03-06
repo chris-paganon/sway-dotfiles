@@ -36,6 +36,20 @@ filename="$filename_base.png"
 
 mkdir -p "$HOME/Pictures/screenshots"
 
+drag() {
+    if command -v ripdrag >/dev/null 2>&1; then
+        ripdrag -s 320 -i "$filename" >/dev/null 2>&1 &
+    fi
+}
+
+upload() {
+    curl -i -F"file=@$filename" https://0x0.st | tee "$filename_base.txt" | tail --lines 1 | wl-copy
+}
+
+edit() {
+    grim -g "$(slurp)" - | swappy -f - -o "$filename"
+}
+
 case "$mode" in
     copy)
         grimshot copy area
@@ -45,26 +59,22 @@ case "$mode" in
         ;;
     save-drag)
         grimshot savecopy area "$filename"
-        if command -v ripdrag >/dev/null 2>&1; then
-            ripdrag "$filename" >/dev/null 2>&1 &
-        fi
+        drag
         ;;
     upload)
         grimshot save area "$filename"
-        curl -i -F"file=@$filename" https://0x0.st | tee "$filename_base.txt" | tail --lines 1 | wl-copy
+        upload
         ;;
     edit)
-        grim -g "$(slurp)" - | swappy -f - -o "$filename"
+        edit
         ;;
     edit-drag)
-        grim -g "$(slurp)" - | swappy -f - -o "$filename"
-        if command -v ripdrag >/dev/null 2>&1; then
-            ripdrag "$filename" >/dev/null 2>&1 &
-        fi
+        edit
+        drag
         ;;
     edit-upload)
-        grim -g "$(slurp)" - | swappy -f - -o "$filename"
-        curl -i -F"file=@$filename" https://0x0.st | tee "$filename_base.txt" | tail --lines 1 | wl-copy
+        edit
+        upload
         ;;
     *)
         echo "Usage: $0 {copy|save|save-drag|upload|edit|edit-drag|edit-upload}" >&2
