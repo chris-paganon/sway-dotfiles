@@ -71,7 +71,6 @@ noto-fonts-extra
 nvidia-open
 nvidia-prime
 nvidia-utils
-nvm
 nwg-displays
 obs-studio
 obsidian
@@ -124,6 +123,7 @@ tmux-plugin-manager
 tmuxp
 ttf-fantasque-nerd
 unzip
+uv
 vivaldi
 vlc
 vlc-plugins-all
