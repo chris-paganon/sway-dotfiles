@@ -7,6 +7,5 @@
     "CtrlShiftDown": "SpawnMultiCursorDown",
     "Ctrl-d": "SpawnMultiCursor",
     "ShiftDelete": "DeleteLine",
-    "Ctrl-p": "command:fzf",
-	"Ctrl-g": "ToggleDiffGutter"
+		"Ctrl-g": "ToggleDiffGutter"
 }
