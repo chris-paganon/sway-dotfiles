@@ -1,7 +1,11 @@
 alias dcd='cd -$(d | fzf --tmux | cut -f1)'
 
-alias glolg="glola | awk -v OFS='\t' '{for(i=1;i<=NF;i++) if(\$i==\"-\") {hash=\$(i-1); break} if(hash) print hash, \$0}' | fzf -m --no-sort -d '\t' --with-nth 2.. --preview='git show {1}' | cut -f1"
-alias glolgc="glola | awk -v OFS='\t' '{for(i=1;i<=NF;i++) if(\$i==\"-\") {hash=\$(i-1); break} if(hash) print hash, \$0}' | fzf -m --no-sort -d '\t' --with-nth 2.. --preview='git show {1}' | cut -f1 | tee >(wl-copy)"
+alias glolg="glola | \
+  awk -v OFS='\t' '{for(i=1;i<=NF;i++) if(\$i==\"-\") {hash=\$(i-1); break} if(hash) print hash, \$0}' | \
+  fzf -m --no-sort --reverse -d '\t' --with-nth 2.. --preview='git show {1}' | \
+  cut -f1"
+
+alias glolgc='glolg | tee >(sed -z "s/\\n$//" | wl-copy)'
 
 mf() {
     micro $(fzf --preview="bat -f {}" --query="$1")
