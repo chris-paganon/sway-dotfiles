@@ -153,16 +153,10 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 bindsym $mod+Mod1+e exec ~/.config/fuzzel/fuzzel-logout.sh
 bindsym $mod+Mod1+Space exec ~/.config/fuzzel/fuzzel-tmuxp.sh
 
+# Screenshot: copy, edit-drag, edit-upload
 bindsym Mod1+x exec ~/.config/sway/screenshot.sh copy
-bindsym Mod1+Shift+x exec ~/.config/sway/screenshot.sh save
-bindsym $mod+Mod1+x exec ~/.config/sway/screenshot.sh upload
-bindsym $mod+Mod1+Shift+x exec ~/.config/sway/screenshot.sh save-drag
-bindsym $mod+Mod1+Control+Shift+x exec ~/.config/sway/screenshot.sh edit-upload
-
-bindsym Mod1+Control+x exec ~/.config/sway/screenshot.sh edit
-bindsym $mod+Control+x exec ~/.config/sway/screenshot.sh edit-upload
-bindsym $mod+Mod1+Control+x exec ~/.config/sway/screenshot.sh edit-drag
-bindsym $mod+Control+Shift+x exec ~/.config/sway/screenshot.sh edit-upload
+bindsym $mod+x exec ~/.config/sway/screenshot.sh edit-drag
+bindsym Mod1+Control+x exec ~/.config/sway/screenshot.sh edit-upload
 
 bindsym Mod1+n exec swaync-client -t -sw
 

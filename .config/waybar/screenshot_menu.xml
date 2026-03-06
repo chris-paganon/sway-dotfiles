@@ -3,22 +3,22 @@
   <object class="GtkMenu" id="menu">
     <child>
       <object class="GtkMenuItem" id="copy">
-        <property name="label">Copy to Clipboard (Alt+X)</property>
+        <property name="label">Copy (Alt+X)</property>
       </object>
     </child>
     <child>
       <object class="GtkMenuItem" id="save">
-        <property name="label">Save and Copy (Alt+Shift+X)</property>
+        <property name="label">Copy and Save</property>
       </object>
     </child>
     <child>
       <object class="GtkMenuItem" id="save_drag">
-        <property name="label">Save, Copy and Drag</property>
+        <property name="label">Copy, Save and Drag</property>
       </object>
     </child>
     <child>
       <object class="GtkMenuItem" id="upload">
-        <property name="label">Upload (Super+Alt+X)</property>
+        <property name="label">Upload</property>
       </object>
     </child>
     <child>
@@ -26,17 +26,17 @@
     </child>
     <child>
       <object class="GtkMenuItem" id="edit">
-        <property name="label">Edit and Save (Alt+Ctrl+X)</property>
+        <property name="label">Edit and Save</property>
       </object>
     </child>
     <child>
       <object class="GtkMenuItem" id="edit_drag">
-        <property name="label">Edit, Save and Drag</property>
+        <property name="label">Edit, Save and Drag (Super+X)</property>
       </object>
     </child>
     <child>
       <object class="GtkMenuItem" id="edit_upload">
-        <property name="label">Edit and Upload</property>
+        <property name="label">Edit and Upload (Alt+Ctrl+X)</property>
       </object>
     </child>
   </object>
