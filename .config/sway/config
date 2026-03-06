@@ -153,12 +153,16 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 bindsym $mod+Mod1+e exec ~/.config/fuzzel/fuzzel-logout.sh
 bindsym $mod+Mod1+Space exec ~/.config/fuzzel/fuzzel-tmuxp.sh
 
-bindsym Mod1+x exec grimshot copy area
-bindsym Mod1+Shift+x exec grimshot savecopy area "$HOME/Pictures/screenshots/$(date +%Y-%m-%dT%H:%M:%S%Z).jpg"
-bindsym $mod+Mod1+x exec ~/.config/sway/screenshot-upload.sh
+bindsym Mod1+x exec ~/.config/sway/screenshot.sh copy
+bindsym Mod1+Shift+x exec ~/.config/sway/screenshot.sh save
+bindsym $mod+Mod1+x exec ~/.config/sway/screenshot.sh upload
+bindsym $mod+Mod1+Shift+x exec ~/.config/sway/screenshot.sh save-drag
+bindsym $mod+Mod1+Control+Shift+x exec ~/.config/sway/screenshot.sh edit-upload
 
-bindsym Mod1+Control+x exec grim -g "$(slurp)" - | swappy -f - -o "$HOME/Pictures/screenshots/$(date +%Y-%m-%dT%H:%M:%S%Z).jpg"
-bindsym $mod+Control+x exec ~/.config/sway/screenshot-upload.sh --edit
+bindsym Mod1+Control+x exec ~/.config/sway/screenshot.sh edit
+bindsym $mod+Control+x exec ~/.config/sway/screenshot.sh edit-upload
+bindsym $mod+Mod1+Control+x exec ~/.config/sway/screenshot.sh edit-drag
+bindsym $mod+Control+Shift+x exec ~/.config/sway/screenshot.sh edit-upload
 
 bindsym Mod1+n exec swaync-client -t -sw
 
@@ -245,6 +249,12 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
+
+bindsym $mod+Mod1+s exec /usr/share/sway-contrib/swaystack.py --up
+bindsym $mod+Mod1+d exec /usr/share/sway-contrib/swaystack.py --down
+bindsym $mod+Mod1+f exec /usr/share/sway-contrib/swaystack.py --rot-up
+bindsym $mod+Mod1+g exec /usr/share/sway-contrib/swaystack.py --rot-down
+
 # Note: workspaces can have any name you want, not just numbers.
 # We just use 1-10 as the default.
 #

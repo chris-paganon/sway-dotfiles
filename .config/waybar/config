@@ -130,13 +130,13 @@
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/screenshot_menu.xml",
 		"menu-actions": {
-			"copy": "grimshot copy area",
-			"save": "grimshot savecopy area \"$HOME/Pictures/screenshots/$(date +%Y-%m-%dT%H:%M:%S%Z).jpg\"",
-			"save_drag": "$HOME/.config/sway/screenshot-save-ripdrag.sh",
-			"upload": "$HOME/.config/sway/screenshot-upload.sh",
-			"edit": "grim -g \"$(slurp)\" - | swappy -f - -o \"$HOME/Pictures/screenshots/$(date +%Y-%m-%dT%H:%M:%S%Z).jpg\"",
-			"edit_drag": "$HOME/.config/sway/screenshot-save-ripdrag.sh edit",
-			"edit_upload": "$HOME/.config/sway/screenshot-upload.sh --edit",
+			"copy": "$HOME/.config/sway/screenshot.sh copy",
+			"save": "$HOME/.config/sway/screenshot.sh save",
+			"save_drag": "$HOME/.config/sway/screenshot.sh save-drag",
+			"upload": "$HOME/.config/sway/screenshot.sh upload",
+			"edit": "$HOME/.config/sway/screenshot.sh edit",
+			"edit_drag": "$HOME/.config/sway/screenshot.sh edit-drag",
+			"edit_upload": "$HOME/.config/sway/screenshot.sh edit-upload"
 		}
     },
     "custom/power": {
