@@ -1,11 +1,11 @@
 [user]
-	name = chrispaganon
+	name = Chris Paganon
 	email = info@chrispaganon.com
 
 [safe]
 	directory = /etc/etcfiles
 	directory = ~/Documents
-	directory = /home/chris/Documents/mnt-kodi/containers/servarr
+	directory = /home/chris/Documents/mnt/kodi/containers/servarr
 
 [core]
 	pager = delta
