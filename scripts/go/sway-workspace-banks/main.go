@@ -136,7 +136,12 @@ func doSwap(
 		return err
 	}
 
-	if err := restoreVisibleWorkspaces(ctx, client, focused, visibleByOutput); err != nil {
+	updatedInfoByNum, err := getWorkspaceInfo(client, ctx)
+	if err != nil {
+		return err
+	}
+
+	if err := restoreVisibleWorkspaces(ctx, client, focused, visibleByOutput, updatedInfoByNum); err != nil {
 		return err
 	}
 
@@ -178,7 +183,12 @@ func doPush(
 		}
 	}
 
-	if err := restoreVisibleWorkspaces(ctx, client, focused, visibleByOutput); err != nil {
+	updatedInfoByNum, err := getWorkspaceInfo(client, ctx)
+	if err != nil {
+		return err
+	}
+
+	if err := restoreVisibleWorkspaces(ctx, client, focused, visibleByOutput, updatedInfoByNum); err != nil {
 		return err
 	}
 
@@ -439,12 +449,30 @@ func activeSetIsEmpty(infoByNum map[int]workspaceInfo) bool {
 	return true
 }
 
-func restoreFocus(ctx context.Context, client sway.Client, focused focusedWorkspace) error {
+func firstNonEmptyActiveWorkspace(infoByNum map[int]workspaceInfo) int {
+	for slot := activeStart; slot <= activeEnd; slot++ {
+		if infoByNum[slot].NonEmpty {
+			return slot
+		}
+	}
+
+	return 0
+}
+
+func restoreFocus(ctx context.Context, client sway.Client, focused focusedWorkspace, infoByNum map[int]workspaceInfo) error {
+	targetNum := focused.Num
+	if !infoByNum[targetNum].NonEmpty {
+		fallback := firstNonEmptyActiveWorkspace(infoByNum)
+		if fallback != 0 {
+			targetNum = fallback
+		}
+	}
+
 	if err := runCommand(client, ctx, fmt.Sprintf("focus output %s", focused.Output)); err != nil {
 		return err
 	}
 
-	if err := runCommand(client, ctx, fmt.Sprintf("workspace number %d", focused.Num)); err != nil {
+	if err := runCommand(client, ctx, fmt.Sprintf("workspace number %d", targetNum)); err != nil {
 		return err
 	}
 
@@ -456,6 +484,7 @@ func restoreVisibleWorkspaces(
 	client sway.Client,
 	focused focusedWorkspace,
 	visibleByOutput map[string]visibleWorkspace,
+	infoByNum map[int]workspaceInfo,
 ) error {
 	outputs := make([]string, 0, len(visibleByOutput))
 	for output := range visibleByOutput {
@@ -477,7 +506,7 @@ func restoreVisibleWorkspaces(
 		}
 	}
 
-	if err := restoreFocus(ctx, client, focused); err != nil {
+	if err := restoreFocus(ctx, client, focused, infoByNum); err != nil {
 		return err
 	}
 
