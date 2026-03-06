@@ -56,9 +56,7 @@ set $term ghostty
 # Your preferred application launcher
 set $menu fuzzel
 
-set $move_to_next ~/.config/sway/move-to-next.sh
-set $start_on_next ~/.config/sway/start-on-next.sh
-set $open_next ~/.config/sway/open-next.sh
+set $active_workspaces exec --no-startup-id ~/scripts/go/sway-active-workspaces/sway-active-workspaces
 set $swap_windows exec --no-startup-id ~/scripts/go/sway-swap-windows/sway-swap-windows
 set $workspace_banks exec --no-startup-id ~/scripts/go/sway-workspace-banks/sway-workspace-banks
 
@@ -133,7 +131,7 @@ bindsym $mod+q kill
 
 # Start your launcher
 bindsym Mod1+Space exec $menu
-bindsym Mod1+Control+space exec $open_next; exec exec $menu
+bindsym Mod1+Control+space $active_workspaces open-next-free; exec exec $menu
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
@@ -163,12 +161,12 @@ bindsym Mod1+n exec swaync-client -t -sw
 
 # Start specific apps
 bindsym Mod1+f exec vivaldi
-bindsym Mod1+Control+f exec $start_on_next vivaldi
+bindsym Mod1+Control+f $active_workspaces start-on-next-free vivaldi
 bindsym $mod+f [app_id="vivaldi-stable"] focus
 for_window [title="Bitwarden - Vivald"] floating enable; move position cursor
 
 bindsym Mod1+e exec pcmanfm-qt
-bindsym Mod1+Control+e exec $start_on_next pcmanfm-qt
+bindsym Mod1+Control+e $active_workspaces start-on-next-free pcmanfm-qt
 bindsym $mod+e [app_id="pcmanfm-qt"] focus
 
 bindsym Mod1+d exec discord
@@ -199,7 +197,7 @@ for_window [app_id="spotify"] mark "music"; \
     move up 40;
 
 bindsym Mod1+c exec cursor
-bindsym Mod1+Control+c exec --no-startup-id $start_on_next cursor
+bindsym Mod1+Control+c $active_workspaces start-on-next-free cursor
 bindsym $mod+c [class="Cursor"] focus
 
 bindsym Mod1+q exec qalculate-qt
@@ -223,8 +221,8 @@ bindsym $mod+Mod1+Up move up
 bindsym $mod+Mod1+Right move right
 
 # Move focused window to left & right output
-bindsym --whole-window $mod+button8 move container to output left; workspace next_on_output; focus output left
-bindsym --whole-window $mod+button9 move container to output right; workspace next_on_output; focus output right
+bindsym --whole-window $mod+button8 $active_workspaces move-to-output-cycle left
+bindsym --whole-window $mod+button9 $active_workspaces move-to-output-cycle right
 
 #
 # Workspaces:
@@ -289,22 +287,22 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+p focus parent
 
 bindsym $mod+Escape workspace back_and_forth
-bindsym $mod+Tab workspace next_on_output
+bindsym $mod+Tab $active_workspaces focus-next-on-output
 bindsym $mod+Shift+a scratchpad show
 
 # Move container to left & right output on new workspace
-bindsym --whole-window $mod+Control+button8 move container to output left; workspace next_on_output; focus output left; exec --no-startup-id $move_to_next
-bindsym $mod+Control+Left move container to output left; workspace next_on_output; focus output left; exec --no-startup-id $move_to_next
-bindsym --whole-window $mod+Control+button9 move container to output right; workspace next_on_output; focus output right; exec --no-startup-id $move_to_next
-bindsym $mod+Control+Right move container to output right; workspace next_on_output; focus output right; exec --no-startup-id $move_to_next
+bindsym --whole-window $mod+Control+button8 $active_workspaces move-to-output-new left
+bindsym $mod+Control+Left $active_workspaces move-to-output-new left
+bindsym --whole-window $mod+Control+button9 $active_workspaces move-to-output-new right
+bindsym $mod+Control+Right $active_workspaces move-to-output-new right
 
 # To workspace on same screen
 # move window to next available workspace on same screen
-bindsym --whole-window $mod+button4 exec --no-startup-id $move_to_next
-bindsym $mod+Control+Up exec --no-startup-id $move_to_next
+bindsym --whole-window $mod+button4 $active_workspaces move-to-next-free
+bindsym $mod+Control+Up $active_workspaces move-to-next-free
 # switch to next available workspace on same screen
-bindsym --whole-window $mod+Shift+button4 move container to workspace next_on_output; workspace next_on_output;
-bindsym $mod+Control+Down move container to workspace next_on_output; workspace next_on_output;
+bindsym --whole-window $mod+Shift+button4 $active_workspaces move-follow-next-on-output
+bindsym $mod+Control+Down $active_workspaces move-follow-next-on-output
 
 # Swap containers
 bindsym --whole-window $mod+Shift+button8 $swap_windows left;
