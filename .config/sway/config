@@ -250,9 +250,8 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-bindsym $mod+Mod1+s $workspace_banks push-next
-bindsym $mod+Mod1+d $workspace_banks swap-prev
-bindsym $mod+Mod1+f $workspace_banks swap-next
+bindsym Mod1+Tab $workspace_banks swap-next
+bindsym $mod+Mod1+Tab $workspace_banks push-next
 # $mod+Mod1+g reserved for future bank command
 
 # Note: workspaces can have any name you want, not just numbers.
