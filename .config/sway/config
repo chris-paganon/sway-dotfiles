@@ -60,6 +60,7 @@ set $move_to_next ~/.config/sway/move-to-next.sh
 set $start_on_next ~/.config/sway/start-on-next.sh
 set $open_next ~/.config/sway/open-next.sh
 set $swap_windows exec --no-startup-id ~/scripts/go/sway-swap-windows/sway-swap-windows
+set $workspace_banks exec --no-startup-id ~/scripts/go/sway-workspace-banks/sway-workspace-banks
 
 ### Output configuration
 #
@@ -251,10 +252,10 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-bindsym $mod+Mod1+s exec /usr/share/sway-contrib/swaystack.py --up
-bindsym $mod+Mod1+d exec /usr/share/sway-contrib/swaystack.py --down
-bindsym $mod+Mod1+f exec /usr/share/sway-contrib/swaystack.py --rot-up
-bindsym $mod+Mod1+g exec /usr/share/sway-contrib/swaystack.py --rot-down
+bindsym $mod+Mod1+s $workspace_banks push-next
+bindsym $mod+Mod1+d $workspace_banks swap-prev
+bindsym $mod+Mod1+f $workspace_banks swap-next
+# $mod+Mod1+g reserved for future bank command
 
 # Note: workspaces can have any name you want, not just numbers.
 # We just use 1-10 as the default.
