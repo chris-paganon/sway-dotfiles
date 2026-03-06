@@ -83,6 +83,7 @@ alias paste="wl-paste"
 alias si=swayimg
 alias sig='swayimg -g'
 alias sc='swayimg -o mtime -g /home/chris/Pictures/screenshots'
+screenshot() { ~/.config/sway/screenshot.sh "$@"; }
 
 # git
 alias sudogp='sudo SSH_AUTH_SOCK="$SSH_AUTH_SOCK" git push'
