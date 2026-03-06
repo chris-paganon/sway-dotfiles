@@ -35,6 +35,11 @@ type focusedWorkspace struct {
 	Output string
 }
 
+type visibleWorkspace struct {
+	Num    int
+	Output string
+}
+
 type state struct {
 	CurrentBankStart int   `json:"current_bank_start"`
 	UpdatedAt        int64 `json:"updated_at"`
@@ -57,6 +62,11 @@ func main() {
 		log.Fatal(err)
 	}
 
+	visibleByOutput, err := getVisibleWorkspacesByOutput(client, ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	if !isActiveWorkspaceNumber(focused.Num) {
 		notify("Workspace banks", "Run only from workspaces 1-9")
 		return
@@ -74,11 +84,11 @@ func main() {
 
 	switch cmd {
 	case "swap-next":
-		err = doSwap(ctx, client, focused, infoByNum, st, true)
+		err = doSwap(ctx, client, focused, visibleByOutput, infoByNum, st, true)
 	case "swap-prev":
-		err = doSwap(ctx, client, focused, infoByNum, st, false)
+		err = doSwap(ctx, client, focused, visibleByOutput, infoByNum, st, false)
 	case "push-next":
-		err = doPush(ctx, client, focused, infoByNum, st)
+		err = doPush(ctx, client, focused, visibleByOutput, infoByNum, st)
 	default:
 		err = fmt.Errorf("unsupported command: %s", cmd)
 	}
@@ -105,6 +115,7 @@ func doSwap(
 	ctx context.Context,
 	client sway.Client,
 	focused focusedWorkspace,
+	visibleByOutput map[string]visibleWorkspace,
 	infoByNum map[int]workspaceInfo,
 	st state,
 	next bool,
@@ -125,7 +136,7 @@ func doSwap(
 		return err
 	}
 
-	if err := restoreFocus(ctx, client, focused); err != nil {
+	if err := restoreVisibleWorkspaces(ctx, client, focused, visibleByOutput); err != nil {
 		return err
 	}
 
@@ -143,6 +154,7 @@ func doPush(
 	ctx context.Context,
 	client sway.Client,
 	focused focusedWorkspace,
+	visibleByOutput map[string]visibleWorkspace,
 	infoByNum map[int]workspaceInfo,
 	st state,
 ) error {
@@ -167,7 +179,7 @@ func doPush(
 		}
 	}
 
-	if err := restoreFocus(ctx, client, focused); err != nil {
+	if err := restoreVisibleWorkspaces(ctx, client, focused, visibleByOutput); err != nil {
 		return err
 	}
 
@@ -199,6 +211,27 @@ func getFocusedWorkspace(client sway.Client, ctx context.Context) (focusedWorksp
 		Num:    int(focused.Num),
 		Output: focused.Output,
 	}, nil
+}
+
+func getVisibleWorkspacesByOutput(client sway.Client, ctx context.Context) (map[string]visibleWorkspace, error) {
+	workspaces, err := client.GetWorkspaces(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	visibleByOutput := make(map[string]visibleWorkspace)
+	for _, ws := range workspaces {
+		if !ws.Visible {
+			continue
+		}
+
+		visibleByOutput[ws.Output] = visibleWorkspace{
+			Num:    int(ws.Num),
+			Output: ws.Output,
+		}
+	}
+
+	return visibleByOutput, nil
 }
 
 func isActiveWorkspaceNumber(num int) bool {
@@ -414,6 +447,39 @@ func restoreFocus(ctx context.Context, client sway.Client, focused focusedWorksp
 	}
 
 	if err := runCommand(client, ctx, fmt.Sprintf("workspace number %d", focused.Num)); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func restoreVisibleWorkspaces(
+	ctx context.Context,
+	client sway.Client,
+	focused focusedWorkspace,
+	visibleByOutput map[string]visibleWorkspace,
+) error {
+	outputs := make([]string, 0, len(visibleByOutput))
+	for output := range visibleByOutput {
+		outputs = append(outputs, output)
+	}
+	sort.Strings(outputs)
+
+	for _, output := range outputs {
+		visible := visibleByOutput[output]
+		if visible.Num <= 0 {
+			continue
+		}
+
+		if err := runCommand(client, ctx, fmt.Sprintf("focus output %s", output)); err != nil {
+			return err
+		}
+		if err := runCommand(client, ctx, fmt.Sprintf("workspace number %d", visible.Num)); err != nil {
+			return err
+		}
+	}
+
+	if err := restoreFocus(ctx, client, focused); err != nil {
 		return err
 	}
 
