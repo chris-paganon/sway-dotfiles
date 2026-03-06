@@ -171,29 +171,35 @@ bindsym Mod1+Control+e exec $start_on_next pcmanfm-qt
 bindsym $mod+e [app_id="pcmanfm-qt"] focus
 
 bindsym Mod1+d exec discord
-bindsym Mod1+Control+d exec $start_on_next discord
-bindsym $mod+d [class="discord"] focus
+bindsym $mod+d [con_mark="discord"] scratchpad show
+for_window [app_id="discord"] mark "discord"; \
+    move scratchpad; \
+    scratchpad show; \
+    resize set 1606 912; \
+    move right 40; \
+    move down 40;
 
 bindsym Mod1+t exec ghostty --class=com.mitchellh.ghostty
+
 bindsym Mod1+a exec ghostty --class=com.mitchellh.ghostty-main-tmux -e ~/.config/tmux/open-main-tmux.sh
+bindsym $mod+a [con_mark="terminal"] scratchpad show
 for_window [app_id="com.mitchellh.ghostty-main-tmux"] mark "terminal"; \
     move scratchpad; \
     scratchpad show; \
     resize set 1606 912;
-bindsym $mod+a [con_mark="terminal"] scratchpad show
 
 bindsym Mod1+s exec spotify-launcher
 bindsym $mod+s [con_mark="music"] scratchpad show
-for_window [app_id="spotify"] mark "music"
-for_window [app_id="spotify"] move scratchpad; [con_mark="music"] scratchpad show;
-for_window [app_id="spotify"] resize set 1606 912
-for_window [app_id="spotify"] move left 40
-for_window [app_id="spotify"] move up 40
+for_window [app_id="spotify"] mark "music"; \
+    move scratchpad; \
+    scratchpad show; \
+    resize set 1606 912; \
+    move left 40; \
+    move up 40;
 
 bindsym Mod1+c exec cursor
 bindsym Mod1+Control+c exec --no-startup-id $start_on_next cursor
 bindsym $mod+c [class="Cursor"] focus
-
 
 bindsym Mod1+q exec qalculate-qt
 for_window [app_id="io.github.Qalculate.qalculate-qt"] floating enable; move position cursor
