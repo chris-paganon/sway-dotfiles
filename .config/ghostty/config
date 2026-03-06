@@ -49,6 +49,8 @@
 # resize-overlay-duration = 4s 200ms
 
 confirm-close-surface = false
+shell-integration-features = no-cursor
+cursor-style = block
 
 theme = catppuccin-mocha.conf
 background-opacity = 0.92
