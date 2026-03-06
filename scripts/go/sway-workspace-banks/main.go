@@ -146,7 +146,6 @@ func doSwap(
 		return err
 	}
 
-	notify("Workspace banks", fmt.Sprintf("Swapped with bank %d-%d", target, target+bankWidth-1))
 	return nil
 }
 
@@ -189,7 +188,6 @@ func doPush(
 		return err
 	}
 
-	notify("Workspace banks", fmt.Sprintf("Pushed active set to %d-%d", target, target+bankWidth-1))
 	return nil
 }
 
