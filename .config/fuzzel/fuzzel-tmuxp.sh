@@ -5,9 +5,9 @@ fuzzel_output=$(tmuxp ls | grep -E '^  [a-zA-Z0-9-]+$' | sed 's/^  //' | fuzzel 
 if [[ -n "$fuzzel_output" ]]; then
   # If we are already attached to the session somehwere else: maybe create a new window in the current directory, then focus the existing session instead
   if [[ $(tmux list-sessions | grep -c "attached") -eq 1 ]]; then
-    swaymsg '[app_id="com.mitchellh.ghostty"] kill' >/dev/null
+    swaymsg '[app_id="com.mitchellh.ghostty-main-tmux"] kill' >/dev/null
   fi
   
-  ghostty -e tmuxp load $fuzzel_output
+  swaymsg "exec ghostty --class=com.mitchellh.ghostty-main-tmux -e tmuxp load $fuzzel_output"
   exit;
 fi
