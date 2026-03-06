@@ -12,6 +12,11 @@
       </object>
     </child>
     <child>
+      <object class="GtkMenuItem" id="save_drag">
+        <property name="label">Save, Copy and Drag</property>
+      </object>
+    </child>
+    <child>
       <object class="GtkMenuItem" id="upload">
         <property name="label">Upload (Super+Alt+X)</property>
       </object>
@@ -25,8 +30,13 @@
       </object>
     </child>
     <child>
+      <object class="GtkMenuItem" id="edit_drag">
+        <property name="label">Edit, Save and Drag</property>
+      </object>
+    </child>
+    <child>
       <object class="GtkMenuItem" id="edit_upload">
-        <property name="label">Edit and Upload (Super+Ctrl+X)</property>
+        <property name="label">Edit and Upload</property>
       </object>
     </child>
   </object>
