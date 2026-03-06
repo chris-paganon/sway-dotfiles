@@ -39,6 +39,9 @@ source /usr/share/zsh/share/antigen.zsh
 
 antigen use oh-my-zsh
 
+export NVM_LAZY_LOAD=true
+antigen bundle lukechilds/zsh-nvm
+
 antigen bundle git
 antigen bundle gitfast
 
@@ -104,6 +107,7 @@ alias dockerstop="docker stop \$(docker ps -q)"
 alias dockerstart="docker start \$(docker ps -qa)"
 alias be="~/.config/tmux/plutaro-full-stack.sh"
 alias be-fcts="~/.config/tmux/plutaro-functions.sh"
+alias pdf="docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf -v stirling-pdf"
 
 # remember fixes
 alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
@@ -161,8 +165,6 @@ export "MICRO_TRUECOLOR=1"
 export "ANDROID_HOME=/home/chris/Android/Sdk"
 export "PATH=$PATH:$ANDROID_HOME/emulator"
 export "PATH=$PATH:$ANDROID_HOME/platform-tools"
-
-. /usr/share/nvm/init-nvm.sh
 
 # Workaround for default only applying after reboot
 if command -v nvm >/dev/null 2>&1; then
