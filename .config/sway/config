@@ -178,9 +178,10 @@ for_window [app_id="discord"] mark "discord"; \
     move right 40; \
     move down 40;
 
-bindsym Mod1+t exec ghostty --class=com.mitchellh.ghostty
+bindsym Mod1+t exec $term
+bindsym Mod1+Control+t $active_workspaces start-on-next-free $term
 
-bindsym Mod1+a exec ghostty --class=com.mitchellh.ghostty-main-tmux -e ~/.config/tmux/open-main-tmux.sh
+bindsym Mod1+a exec $term --class=com.mitchellh.ghostty-main-tmux -e ~/.config/tmux/open-main-tmux.sh
 bindsym $mod+a [con_mark="terminal"] scratchpad show
 for_window [app_id="com.mitchellh.ghostty-main-tmux"] mark "terminal"; \
     move scratchpad; \
