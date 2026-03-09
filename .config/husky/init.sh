@@ -1,1 +1,1 @@
-. /usr/share/nvm/init-nvm.sh
+. ~/.nvm/nvm.sh
