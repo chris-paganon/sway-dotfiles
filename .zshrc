@@ -122,6 +122,10 @@ alias cleanlogs="sudo journalctl --vacuum-time=2weeks"
 
 alias m=micro
 
+upload() {
+    curl -i -F"file=@$1" https://0x0.st | tee >(tail --lines 1 | wl-copy)
+}
+
 # search and replace
 sr() {
     if [[ -z "$1" || -z "$2" ]]; then
