@@ -109,6 +109,18 @@ For gocrypt to auto-mount a directory:
 
 Then check the checkbox 1st time it prompts for it.
 
+##### npm & expo shared network issues
+
+Running `npm dev --host` for vite apps and opening on the phone makes network very buggy. Similar problem with expo go. To resolve this, disabling ipv6 works for some reason. Here is how to disable it permanently:
+
+Add this file `etc/sysctl.d/40-ipv6.conf` with this content:
+```bash
+net.ipv6.conf.all.disable_ipv6=1
+net.ipv6.conf.default.disable_ipv6=1
+net.ipv6.conf.lo.disable_ipv6=1
+```
+And run `sudo sysctl --system`
+
 ##### VSCode & Cursor
 - install vscode extensions from dotfiles `extensions.md`
 - press `ctrl+shift+p`, open `configureRuntimeArguments` and add this line to let vscode/cursor use the gnome keyring: `"password-store": "gnome-libsecret"`
