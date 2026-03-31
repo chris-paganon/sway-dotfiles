@@ -67,7 +67,7 @@ bindkey '^[[1;3C' vi-forward-word
 
 # common aliases
 alias sudo="sudo "
-alias s="sway --unsupported-gpu" 
+alias sw="sway --unsupported-gpu"
 alias c='clear'
 alias ls='lsd'
 alias ll='ls -al'
@@ -168,6 +168,7 @@ manllama() {
 
 export "SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh"
 export "MICRO_TRUECOLOR=1"
+export "_ZO_DOCTOR=0"
 
 export "ANDROID_HOME=/home/chris/Android/Sdk"
 export "PATH=$PATH:$ANDROID_HOME/emulator"
