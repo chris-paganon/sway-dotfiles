@@ -82,7 +82,7 @@ alias paste="wl-paste"
 # sway
 alias si=swayimg
 alias sig='swayimg -g'
-alias sc='swayimg -o mtime -g /home/chris/Pictures/screenshots'
+alias sc='swayimg -g /home/chris/Pictures/screenshots'
 screenshot() { ~/.config/sway/screenshot.sh "$@"; }
 
 # git
