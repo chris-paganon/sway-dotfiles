@@ -60,8 +60,7 @@ fi
 
 remote_name="$(basename "$source_path")"
 
-rclone copy "$source_path" "myfiles:$bucket"
-
-echo "Successfully uploaded to: https://files.chrispaganon.com/$bucket/$remote_name"
-
-wl-copy "https://files.chrispaganon.com/$bucket/$remote_name"
+if rclone copy "$source_path" "myfiles:$bucket"; then
+    echo "Successfully uploaded to: https://files.chrispaganon.com/$bucket/$remote_name"
+    wl-copy "https://files.chrispaganon.com/$bucket/$remote_name"
+fi
