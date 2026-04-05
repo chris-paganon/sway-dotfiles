@@ -108,8 +108,9 @@ alias dockerstop="docker stop \$(docker ps -q)"
 alias dockerstart="docker start \$(docker ps -qa)"
 alias be="~/.config/tmux/plutaro-full-stack.sh"
 alias be-fcts="~/.config/tmux/plutaro-functions.sh"
+alias upload="~/scripts/upload.sh"
 alias pdf="docker run -p 8080:8080 docker.stirlingpdf.com/stirlingtools/stirling-pdf -v stirling-pdf"
-alias ds="dev-switchboard"
+alias sbr="switchbrd"
 
 # remember fixes
 alias grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
@@ -121,10 +122,6 @@ alias fixtime="sudo sntp -S pool.ntp.org && sudo hwclock -w"
 alias cleanlogs="sudo journalctl --vacuum-time=2weeks"
 
 alias m=micro
-
-upload() {
-    curl -i -F"file=@$1" https://0x0.st | tee >(tail --lines 1 | wl-copy)
-}
 
 # search and replace
 sr() {
