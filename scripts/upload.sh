@@ -2,6 +2,8 @@
 
 bucket="plutaro"
 file=""
+source_path=""
+remote_name=""
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -45,13 +47,21 @@ if [[ -z "$file" ]]; then
     exit 1
 fi
 
-if [[ ! -e "$file" ]]; then
-    echo "upload: file not found: $file"
+if [[ "$file" = /* ]]; then
+    source_path="$file"
+else
+    source_path="$PWD/$file"
+fi
+
+if [[ ! -e "$source_path" ]]; then
+    echo "upload: file not found: $source_path"
     exit 1
 fi
 
-rclone copy "$file" "myfiles:$bucket"
+remote_name="$(basename "$source_path")"
 
-echo "Successfully uploaded to: https://files.chrispaganon.com/$bucket/$file"
+rclone copy "$source_path" "myfiles:$bucket"
 
-wl-copy "https://files.chrispaganon.com/$bucket/$file"
+echo "Successfully uploaded to: https://files.chrispaganon.com/$bucket/$remote_name"
+
+wl-copy "https://files.chrispaganon.com/$bucket/$remote_name"
