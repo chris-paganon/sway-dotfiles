@@ -3,6 +3,7 @@
 set -euo pipefail
 
 mode="${1:-copy}"
+upload_script="$HOME/scripts/upload.sh"
 
 case "$mode" in
     -h|--help)
@@ -15,10 +16,10 @@ Modes:
   copy         Copy selection to clipboard only
   save         Save to file and copy to clipboard
   save-drag    Save, copy, and open ripdrag for drag-to-folder
-  upload       Save area and upload to 0x0.st (URL copied to clipboard)
+  upload       Save area and upload via upload script (URL copied to clipboard)
   edit         Select region, edit in swappy, then save
   edit-drag    Edit in swappy, save, then open ripdrag
-  edit-upload  Edit in swappy, save, then upload to 0x0.st
+  edit-upload  Edit in swappy, save, then upload via upload script
 
 Screenshots are saved to \$HOME/Pictures/screenshots/
 
@@ -43,7 +44,7 @@ drag() {
 }
 
 upload() {
-    curl -i -F"file=@$filename" https://0x0.st | tee "$filename_base.txt" | tail --lines 1 | wl-copy
+    bash "$upload_script" "$filename"
 }
 
 edit() {
