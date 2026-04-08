@@ -82,6 +82,7 @@ exec gnome-keyring-daemon --start --components=secrets
 exec swaync
 exec slimbookbattery --minimize
 exec nm-applet
+exec pcmanfm -d &
 
 ### Idle configuration
 #
@@ -190,7 +191,7 @@ for_window [app_id="com.mitchellh.ghostty-main-tmux"] mark "terminal"; \
 
 bindsym Mod1+s exec spotify-launcher
 bindsym $mod+s [con_mark="music"] scratchpad show
-for_window [app_id="spotify"] mark "music"; \
+for_window [class="Spotify"] mark "music"; \
     move scratchpad; \
     scratchpad show; \
     resize set 1606 912; \
