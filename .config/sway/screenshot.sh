@@ -31,7 +31,7 @@ EOF
         ;;
 esac
 
-now="$(date +%Y-%m-%dT%H:%M:%S%Z)"
+now="$(date --utc +%Y-%m-%dT%H:%M:%S)"
 filename_base="$HOME/Pictures/screenshots/$now"
 filename="$filename_base.png"
 
