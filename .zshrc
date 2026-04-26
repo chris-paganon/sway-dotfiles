@@ -35,6 +35,8 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 autoload -Uz compinit
 compinit
 
+eval "$(zoxide init zsh)"
+
 source /usr/share/zsh/share/antigen.zsh
 
 antigen use oh-my-zsh
@@ -54,8 +56,7 @@ antigen bundle Aloxaf/fzf-tab
 antigen apply
 
 eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
-eval "$(fzf --zsh)"
+source <(fzf --zsh)
 
 . ~/scripts/fzf.sh
 
