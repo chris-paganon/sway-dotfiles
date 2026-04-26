@@ -149,7 +149,7 @@ manllama() {
         return 1
     fi
 
-    local model_name="mistral"
+    local model_name="gemma4"
     if [[ "$model" == "high" ]]; then
         model_name="glm-4.7-flash"
     fi
@@ -160,7 +160,27 @@ manllama() {
         return 1
     fi
 
-    ollama run $model_name "You will now help mew answer a question using some potentially relevant documentation. Here is the documentation: <documentation>$documentation</documentation>. If the exact answer to the query is not in the documentation, DON'T ANSWER and simply say 'the documentation provided does not contain the information you are looking for'. If you provide any unverified information, ALWAYS mention what is unverified from the documentation. Now answer my question: <question>$query</question>. DON'T ANSWER UNVERIFIED INFORMATION."
+    ollama run $model_name --think=false "You will now help mew answer a question using some potentially relevant documentation. Here is the documentation: <documentation>$documentation</documentation>. If the exact answer to the query is not in the documentation, DON'T ANSWER and simply say 'the documentation provided does not contain the information you are looking for'. If you provide any unverified information, ALWAYS mention what is unverified from the documentation. Now answer my question: <question>$query</question>. DON'T ANSWER UNVERIFIED INFORMATION."
+}
+
+shellama() {
+	local query="$*"
+
+    local prompt=$(cat <<EOF
+Give me the shell command to run to execute the provided query. Only output the command, no introduction, no backticks, no code block, no markdown, just the command.
+
+The current environment has access to all common linux commands. Prefer modern alternatives like rg, fd & sd. Other tools available are ffmpeg, fzf, docker, node, python, jq, duckdb, git and more.
+
+Give the command for the user query now: <query>$query</query>.
+EOF
+)
+
+	local cmd=$(ollama run gemma4 --think=false "$prompt")
+
+    echo "$cmd"
+    wl-copy "$cmd"
+
+    print -z -- "$cmd"
 }
 
 export "SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh"
