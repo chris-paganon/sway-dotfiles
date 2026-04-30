@@ -138,7 +138,16 @@ sr() {
     rg --files-with-matches "$1" | xargs sd "$1" "$2"
 }
 
+getenv() {
+    if [[ -z "$1" || -z "$2" ]]; then
+        echo "Usage: getenv <variable> <file>"
+        echo "Example: getenv WEBHOOK_SECRET .env"
+        echo "Expands to: rg --max-count 1 '^WEBHOOK_SECRET=' .env | cut -d= -f2-"
+        return 1
+    fi
 
+    rg --max-count 1 "^$1=" "$2" | cut -d= -f2-
+}
 
 export "SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh"
 export "MICRO_TRUECOLOR=1"
